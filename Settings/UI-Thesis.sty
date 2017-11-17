@@ -35,7 +35,6 @@
 \usepackage{tocloft}
 \usepackage{array}
 \usepackage{hyperref}
-%\usepackage[backref=page]{hyperref}
 \usepackage{cite}
 \usepackage{enumitem}
 \usepackage{subfig}
@@ -167,8 +166,6 @@
 \subsubsectionfont{\fontsize{13pt}{\baselineskip}\selectfont \bfseries \BNazaninScaleOne} % B Nazanin 13
 
 \titlespacing*{\chapter}{0pt}{2.5cm}{6cm}
-%\titlespacing*{\chapter}{0pt}{3.5cm}{8cm}
-
 \titlespacing*{\section}{0pt}{1.2\baselineskip}{0pt}
 \titlespacing*{\subsection}{0pt}{1.1\baselineskip}{0pt}
 \titlespacing*{\subsubsection}{0pt}{1\baselineskip}{0pt}
@@ -193,8 +190,6 @@
 \setlength{\footnotesep}{0.4cm}
 \renewcommand{\footnotesize}{\bfseries\fontsize{11pt}{0}\selectfont} 
 \renewcommand{\thefootnote}{\bfseries\fontsize{6.5pt}{0}\selectfont\arabic{footnote}}
-%\renewcommand{\sourcecodesize}{\bfseries\fontsize{8.5pt}{0}\selectfont} 
-
 \setlength{\footnotemargin}{0.2cm}
 
 %%
@@ -244,7 +239,6 @@
 \setlength\cftchapindent{0cm}
 \setlength\cftsecindent{0cm}
 \setlength\cftsubsecindent{0cm} % table of contents of subsections with no indentation
-%\setlength\cftsubsecindent{0.35cm}
 \setlength\cftsubsubsecindent{0cm}
 \setlength\cftfigindent{0cm}
 \setlength\cfttabindent{0cm}
@@ -256,10 +250,8 @@
 \makeatother
 
 \addtocontents{toc}{~\textbf{\fontsize{13pt}{0}\selectfont {\BNazaninScaleOne عنوان}}\hfill\textbf{\fontsize{13pt}{0}\selectfont {\BNazaninScaleOne صفحه}}\vspace{0.2cm}\protect\par} % B Nazanin 13
-%\addtocontents{toc}{\protect\vspace*{15pt}}
 \addtocontents{toc}{\protect\vspace*{10pt}}
 %\addtocontents{toc}{\protect\afterpage{\hspace*{-3.9em}\bfseries عنوان \hfill صفحه}}
-%\addtocontents{toc}{\protect\afterpage{\hspace*{-1.3em}\bfseries عنوان \hfill صفحه}}
 \addtocontents{toc}{\protect\afterpage{\hspace*{-0.1em}\bfseries عنوان \hfill صفحه}}
 \addtocontents{toc}{\protect\afterpage{\vspace*{10pt}}}
 \addtocontents{toc}{\protect\afterpage{\protect\afterpage{\hspace*{-2.6em}\bfseries عنوان \hfill صفحه}}}
@@ -269,8 +261,6 @@
 \addtocontents{lof}{\protect\vspace*{10pt}}
 \addtocontents{lof}{\protect\afterpage{\hspace*{-0.1em}\bfseries عنوان \hfill صفحه}}
 \addtocontents{lof}{\protect\afterpage{\vspace*{10pt}}}
-%\addtocontents{lof}{\protect\afterpage{\protect\afterpage{\hspace*{-1.3em}\bfseries عنوان \hfill صفحه}}}
-%\addtocontents{lof}{\protect\afterpage{\protect\afterpage{\vspace*{25pt}}}}
 
 \addtocontents{lot}{~\textbf{\fontsize{13pt}{0}\selectfont {\BNazaninScaleOne عنوان}}\hfill\textbf{\fontsize{13pt}{0}\selectfont {\BNazaninScaleOne صفحه}}\vspace{-0.1cm}\protect\par} % B Nazanin 13
 \addtocontents{lot}{\protect\vspace*{10pt}}
@@ -434,7 +424,7 @@
 \newgeometry{left=3.5cm, right=3.5cm, top=3.5cm, bottom=3.5cm}
 {\BNazaninScaleOne
 \begin{center}
-\includegraphics[width = 2.5cm]{Settings/UI_Logo.png}
+\includegraphics[width = 2.5cm]{Settings/UI_Logo.pdf}
 \\[0.5cm]
 {\fontsize{13pt}{0}\selectfont % B Nazanin bold 13
 \textbf{
@@ -455,7 +445,7 @@
 }}\fi \\[0.4cm] % B Nazanin 15
 \ifx\ST@SecondSupervisorFa\undefined
 {\fontsize{13pt}{0}\selectfont \textbf{دکتر‍~\@FirstSupervisorFa}}
-\else {\fontsize{13pt}{0}\selectfont \textbf{\@FirstSupervisorFa~~و~~\ST@SecondSupervisorFa}} \fi \\% B Nazanin  bold 13
+\else {\fontsize{13pt}{0}\selectfont \textbf{دکتر‍~\@FirstSupervisorFa~~و~~دکتر‍~\ST@SecondSupervisorFa}} \fi \\% B Nazanin  bold 13
 \vspace*{\fill}
 
 {\fontsize{15pt}{0}\selectfont \textbf{
@@ -503,7 +493,7 @@
 \newgeometry{left=3.5cm, right=3.5cm, top=3.5cm, bottom=3.5cm}
 {\BNazaninScaleOne
 \begin{center}
-\includegraphics[width = 2.5cm]{Settings/UI_Logo.png}
+\includegraphics[width = 2.5cm]{Settings/UI_Logo.pdf}
 \\ [0.5cm]
 {\fontsize{13pt}{0}\selectfont % B Nazanin bold 13
 \textbf{
@@ -515,9 +505,6 @@
 
 {\fontsize{18pt}{0}\selectfont \textbf{\@ThesisTypeFa~\@DegreeFa~\@FieldFa~\@BranchFa~ \\ [0.4cm] \@Prefix~\@YourFullnameFa}}\\ % B Nazanin bold 18
 [1cm]
-
-%{\fontsize{18pt}{0}\selectfont \textbf{\@ThesisTypeFa~\@DegreeFa~رشته‌ی~\@FieldFa~گرایش~\@BranchFa~ \\ [0.4cm] \@Prefix~\@YourFullnameFa~تحت عنوان}}\\ % B Nazanin bold 18
-%[1cm]
 
 {\fontsize{15pt}{0}\selectfont  \BTitrScaleOne \textbf{\@TitleFa}} % B Titr 15
 \\ [1cm]
@@ -536,8 +523,8 @@
 \\[1cm]
 \ifx\ST@SecondSupervisorFa\undefined \else
 \RowNumberFa - &
-استاد راهنمای~\@ThesisTypeFa & دکتر~\@SecondSupervisorFa & با مرتبه‌ی علمی~\textbf{\@SecondSupervisorAcademicRank} &   امضاء
-%\\[1cm]
+استاد راهنمای~\@ThesisTypeFa & دکتر~\ST@SecondSupervisorFa & با مرتبه‌ی علمی~\textbf{\@SecondSupervisorAcademicRank} &   امضاء
+\\[1cm]
 \fi
 %\RowNumberFa - &
 %استاد مشاور~\@ThesisTypeFa  & دکتر‍~\ST@FirstSupervisorFa & با مرتبه‌ی علمی~\textbf{\@FirstSupervisorAcademicRank} &   امضاء
@@ -697,9 +684,17 @@
 
 {\fontsize{15pt}{0}\selectfont \textbf{\@TitleEn}} % TNR 15
 \vspace*{\fill}
-
+\ifx\ST@SecondSupervisorEn\undefined
 {\fontsize{14pt}{0}\selectfont \textbf{Supervisor:}} % TNR 14
+\else
+{\fontsize{14pt}{0}\selectfont \textbf{Supervisors:}} % TNR 14
+\fi
+\ifx\ST@SecondSupervisorEn\undefined
 {\fontsize{13pt}{0}\selectfont \textbf{\\[0.25cm] Dr.~\@FirstSupervisorEn}} % TNR 13
+\else
+{\fontsize{13pt}{0}\selectfont \textbf{\\[0.25cm] Dr.~\@FirstSupervisorEn}
+\textbf{\\[0.25cm] Dr.~\ST@SecondSupervisorEn}} % TNR 13
+\fi
 \vspace*{\fill}
 
 {\fontsize{14pt}{0}\selectfont \textbf{By:\\[0.25cm]}} % TNR 14
@@ -735,7 +730,6 @@
 \addtocontents{toc}{\protect\setcounter{tocdepth}{-1}}
 \chapter*{پیوست‌ها}
 \addtocontents{toc}{\protect\setcounter{tocdepth}{0}}
-%\addtocontents{toc}{\protect\setcounter{tocdepth}{2}}
 
 \addcontentsline{toc}{chapter}{پیوست‌ها}‎
 }
@@ -750,3 +744,8 @@
 \titlespacing*{\chapter}{0pt}{-\baselineskip}{0.5cm}
 \fontsize{11pt}{14.4} \selectfont \BNazaninScaleOne \renewcommand{\bibname}{{منابع و مآخذ}\hfill}
 }
+
+% دستوری برای تعریف واژه‌نامه انگلیسی به فارسی
+\newcommand\persiangloss[2]{#1\dotfill\lr{#2}\\}
+% دستوری برای تعریف واژه‌نامه فارسی به انگلیسی 
+\newcommand\englishgloss[2]{#2\dotfill\lr{#1}\\}

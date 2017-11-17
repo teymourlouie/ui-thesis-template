@@ -1,3 +1,5 @@
+% !TeX program = xelatex
+
 % UI-Thesis v1.0
 
 % این قالب بر اساس فرمت پایان‌نامه‌ها و رساله‌های تحصیلات تکمیلی دانشگاه اصفهان تهیه شده است.
@@ -41,7 +43,7 @@
 
 % در این قالب سعی شده است که از تمامی بخش‌های موجود در پایان‌نامه‌ها نمونه‌ای آورده شود.
 
-\documentclass[a4paper,fleqn,11pt,twoside]{book}
+\documentclass[a4paper,fleqn,11pt,oneside]{book}
 \usepackage{Settings/UI-Thesis}
 \usepackage[nolist]{acronym}
 
@@ -50,19 +52,29 @@
 % Cross-reference commands.
 \newtheorem{thm}{Theorem}[chapter]
 \theoremstyle{definition}
-\newtheorem{defn}[thm]{تعریف}
+\newtheorem{definition}[thm]{تعریف}
 
-\newcommand{\xs}[1]{بخش \ref{#1}}
-\newcommand{\xc}[1]{فصل \ref{#1}}
-\newcommand{\xp}[1]{صفحه \pageref{#1}}
-\newcommand{\xf}[1]{شکل \ref{#1}}
-\newcommand{\xt}[1]{جدول \ref{#1}}
-\newcommand{\xa}[1]{پیوست \ref{#1}}
-\newcommand{\xd}[1]{تعریف \ref{#1}}
-\newcommand{\xr}[1]{قانون \ref{#1}}
-\newcommand{\xra}[1]{R \ref{#1}}
-\newcommand{\xl}[1]{کد \ref{#1}}
-\newcommand{\xal}[1]{الگوریتم \ref{#1}}
+\newcommand{\xs}[1]{بخش~\ref{#1}}
+\newcommand{\xc}[1]{فصل~\ref{#1}}
+\newcommand{\xp}[1]{صفحه~\pageref{#1}}
+\newcommand{\xf}[1]{شکل~\ref{#1}}
+\newcommand{\xt}[1]{جدول~\ref{#1}}
+\newcommand{\xa}[1]{پیوست~\ref{#1}}
+\newcommand{\xd}[1]{تعریف~\ref{#1}}
+\newcommand{\xr}[1]{قانون~\ref{#1}}
+\newcommand{\xra}[1]{R~\ref{#1}}
+\newcommand{\xl}[1]{کد~\ref{#1}}
+\newcommand{\xal}[1]{الگوریتم~\ref{#1}}
+\newcommand{\xe}[1]{معادله~\eqref{#1}}
+
+\newcommand{\mylr}[1]{\texorpdfstring{\lr{#1}}{#1}}
+\eqenvironment{نکات}{itemize}
+\eqenvironment{تعریف}{definition}
+\eqcommand{مورد}{item}
+
+\renewcommand{\descriptionlabel}[1]%
+{\hspace{\labelsep} $\checkmark$ \hspace{\labelsep}\textbf{#1}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \algnewcommand\algorithmicforeach{\textbf{for each}}
 \algdef{S}[FOR]{ForEach}[1]{\algorithmicforeach\ #1\ \algorithmicdo}
@@ -226,7 +238,7 @@
 \bibliographystyle{Settings/ieeetr-fa}
 \bibliography{References}
 
-% ----------------------------------------------------------------------------
+ ----------------------------------------------------------------------------
 %\clearpage
 \pagestyle{myheadings}
 %\pagenumbering{arabic}
@@ -268,6 +280,10 @@
 \captionsetup{list=no}
 
 \input{Chapters/Appendices}
+
+% ░░░░░░░▒▒▒▒▒▒▓▓▓▓ Dictionary ▓▓▓▓▒▒▒▒▒▒░░░░░░░
+\onehalfspacing
+\include{Chapters/dicfa2en}
 
 % ░░░░░░░▒▒▒▒▒▒▓▓▓▓ Abstract - English ▓▓▓▓▒▒▒▒▒▒░░░░░░░
 \input{Chapters/AbstractEn}
