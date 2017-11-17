@@ -1,0 +1,752 @@
+% UI-Thesis v1.0
+
+% این قالب بر اساس فرمت پایان‌نامه‌ها و رساله‌های تحصیلات تکمیلی دانشگاه اصفهان تهیه شده است.
+
+% توصیه می‌شود که از توزیع تک‌لایو (TexLive) استفاده شود:
+% http://tug.org/texlive/acquire-iso.html
+
+% موفق باشی..... علیرضا روحی-دانشجوی دکتری مهندسی نرم افزار دانشگاه اصفهان.....
+% با تشکر از امین فخاری که قالب اصلی این پایان نامه را برای دانشگاه صنعتی اصفهان درست کرده اند.
+% ‌دی‌ماه 1395
+% a101.fakhari@gmail.com
+% -----------------------------------------------------------------------------------
+
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{Settings/UI-Thesis}[2016/01/01 UI-Thesis Package]
+
+% ░░░░░░░▒▒▒▒▒▒▓▓▓▓ Packages ▓▓▓▓▒▒▒▒▒▒░░░░░░░
+
+\usepackage{upquote}
+\usepackage{listings}
+\usepackage{algorithm}
+\usepackage[noend]{algpseudocode}
+%\usepackage{unicode-math}
+\usepackage{amsmath,amssymb,amsthm,amsfonts}
+\usepackage{graphicx}
+\usepackage{geometry}
+\usepackage{color}
+\usepackage{sectsty}
+\usepackage{titlesec}
+\usepackage{caption}
+\usepackage[nottoc,notlof,notlot]{tocbibind}
+\usepackage{notoccite}
+\usepackage[bottom]{footmisc}
+\usepackage{zref-perpage}
+\usepackage{tocloft}
+\usepackage{array}
+\usepackage{hyperref}
+%\usepackage[backref=page]{hyperref}
+\usepackage{cite}
+\usepackage{enumitem}
+\usepackage{subfig}
+\usepackage{fancyhdr}
+\usepackage{indentfirst}
+\usepackage{fontspec}
+\usepackage{setspace}
+\usepackage{afterpage}
+\usepackage{fancybox}
+\usepackage[localise=on]{xepersian}
+\usepackage{stackengine}
+\usepackage{enumitem}
+\usepackage{pdflscape}
+
+% ░░░░░░░▒▒▒▒▒▒▓▓▓▓ Settings ▓▓▓▓▒▒▒▒▒▒░░░░░░░
+\settextfont[Scale=1.2, ItalicFont=*, ItalicFeatures={FakeSlant=0.32}, BoldItalicFont=* Bold, BoldItalicFeatures={FakeSlant=0.32}]{B Nazanin}
+\setlatintextfont[Scale=1]{Times New Roman} % 11pt
+
+\defpersianfont\BNazaninScaleOne[Scale=1]{B Nazanin}
+\defpersianfont\BTitrScaleOne[Scale=1]{B Titr}
+\deflatinfont\TimesNewRomanScaleOne[Scale=1]{Times New Roman}
+\defpersianfont\IranNastaliqScaleOne[Scale=1]{IranNastaliq}
+
+\makeatletter
+\def\abjad@zero{}
+\def\abj@num@i#1{%
+  \ifcase#1\or الف\or ب\or ج\or د%
+           \or ه‍\or و\or ز\or ح\or ط\fi
+  \ifnum#1=\z@\abjad@zero\fi}
+\def\abj@num@ii#1{%
+  \ifcase#1\or ی\or ک\or ل\or م\or ن%
+           \or س\or ع\or ف\or ص\fi
+  \ifnum#1=\z@\fi\abj@num@i}
+\def\abj@num@iii#1{%
+  \ifcase#1\or ق\or ر\or ش\or ت\or ث%
+            \or خ\or ذ\or ض\or ظ\fi
+  \ifnum#1=\z@\fi\abj@num@ii}
+\def\abj@num@iv#1{%
+  \ifcase#1\or غ\fi
+  \ifnum#1=\z@\fi\abj@num@iii}
+   \let\@latinalph\@alph%
+   \let\@latinAlph\@Alph%
+\def\PersianAlphs{%
+   \let\@alph\abjadnumeral%
+   \let\@Alph\abjadnumeral}
+\def\LatinAlphs{%
+   \let\@alph\@latinalph%
+   \let\@Alph\@latinAlph}
+\PersianAlphs
+\makeatother
+
+%%
+\setlength\intextsep{2\baselineskip plus 2mm minus 1mm}
+\setlength\textfloatsep{3\baselineskip plus 2mm minus 1mm}
+\setlength\floatsep{3\baselineskip}
+\setlength{\tabcolsep}{1.5mm}
+\renewcommand{\arraystretch}{1.5}
+\DeclareCaptionFont{MyFont}{\fontsize{12pt}{0}\selectfont \bfseries \BNazaninScaleOne} % B Nazanin 12
+\DeclareCaptionLabelSeparator{MySeparator}{\,-\,}
+\captionsetup{margin=5mm, font=MyFont, labelsep=MySeparator, justification=centering}
+
+\captionsetup[figure]{aboveskip=2mm}
+\captionsetup[figure]{belowskip=-\baselineskip}
+\captionsetup[table]{aboveskip=2mm}
+\captionsetup[table]{belowskip=\baselineskip}
+
+%%
+%\setmathfont[version=lm]{Latin Modern Math}
+%\mathversion{lm}
+\DeclareMathSizes{10}{11}{10}{8} % Font 12
+%\DefaultMathsDigits
+%\setlength{\mathindent}{0.5cm}
+
+\AtBeginDocument{
+\abovedisplayskip=\baselineskip
+\belowdisplayskip=\baselineskip
+\abovedisplayshortskip=\baselineskip
+\belowdisplayshortskip=\baselineskip
+}
+
+\setlength\mathsurround{1pt}
+\delimitershortfall=-3pt
+
+%%
+\geometry{top=3.5cm, bottom=3.5cm, left=3.5cm, right=3.5cm, footskip=2cm}
+
+%%
+\definecolor{darkblue}{rgb}{0,0,0.5}
+\definecolor{darkred}{rgb}{0.5,0,0}
+\hypersetup{colorlinks=true, linkcolor=darkblue, citecolor=darkred, urlcolor=darkblue, bookmarks, bookmarksdepth=3}
+
+%%
+\SepMark{-}
+
+%%
+\renewcommand*{\citedash}{-}
+
+\makeatletter
+\def\@cite#1#2{[{#1\if@tempswa ,~#2\fi}]}
+\makeatother
+
+%%
+\setlength{\parindent}{5mm}
+
+%%
+\newtheoremstyle{mystyle}%
+  {}%                                     
+  {}%                                    
+  {\itshape}%                             
+  {}%                                     
+  {\fontsize{12pt}{0}\selectfont \bfseries \BNazaninScaleOne} 
+  {.}%                                    
+  { }%                                    
+  {}%
+
+\theoremstyle{mystyle}
+\newtheorem{theorem}{قضیه}[chapter]
+\renewcommand\qedsymbol{$\blacksquare$}
+\newtheorem{remark}{تبصره}[chapter]
+\newtheorem{reminder}{یادآوری}[chapter]
+
+%%
+\titleformat{\chapter}[display]
+{\fontsize{15pt}{0}\selectfont  \flushleft  \bfseries \BNazaninScaleOne} % B Nazanin 15
+{\chaptertitlename\ \tartibi{chapter}}{0.3cm}{\fontsize{15pt}{0}\selectfont \BNazaninScaleOne} % B Nazanin 15
+
+\sectionfont{\fontsize{14pt}{\baselineskip}\selectfont \bfseries \BNazaninScaleOne} % B Nazanin 14
+\subsectionfont{\fontsize{13pt}{\baselineskip}\selectfont \bfseries \BNazaninScaleOne} % B Nazanin 13
+\subsubsectionfont{\fontsize{13pt}{\baselineskip}\selectfont \bfseries \BNazaninScaleOne} % B Nazanin 13
+
+\titlespacing*{\chapter}{0pt}{2.5cm}{6cm}
+%\titlespacing*{\chapter}{0pt}{3.5cm}{8cm}
+
+\titlespacing*{\section}{0pt}{1.2\baselineskip}{0pt}
+\titlespacing*{\subsection}{0pt}{1.1\baselineskip}{0pt}
+\titlespacing*{\subsubsection}{0pt}{1\baselineskip}{0pt}
+
+\makeatletter
+\renewcommand\chapter{\if@openright\cleardoublepage\else\clearpage\fi
+	\thispagestyle{empty}%
+	\global\@topnum\z@
+	\@afterindentfalse
+	\secdef\@chapter\@schapter}
+\makeatother
+
+\setcounter{secnumdepth}{3}
+
+%%
+\setlist[enumerate]{noitemsep, topsep=0pt}
+\setlist[itemize]{noitemsep, topsep=0pt}
+\setlist[description]{noitemsep, topsep=0pt}
+
+%%
+\zmakeperpage{footnote}
+\setlength{\footnotesep}{0.4cm}
+\renewcommand{\footnotesize}{\bfseries\fontsize{11pt}{0}\selectfont} 
+\renewcommand{\thefootnote}{\bfseries\fontsize{6.5pt}{0}\selectfont\arabic{footnote}}
+%\renewcommand{\sourcecodesize}{\bfseries\fontsize{8.5pt}{0}\selectfont} 
+
+\setlength{\footnotemargin}{0.2cm}
+
+%%
+\setcounter{tocdepth}{2}
+\setlength{\cftbeforetoctitleskip}{0cm}
+\setlength{\cftbeforeloftitleskip}{0cm}
+\setlength{\cftbeforelottitleskip}{0cm}
+
+\setlength{\cftaftertoctitleskip}{1cm}
+\setlength{\cftafterloftitleskip}{1cm}
+\setlength{\cftafterlottitleskip}{1cm}
+
+\renewcommand{\cfttoctitlefont}{\hspace{5.5cm} \fontsize{13pt}{0}\selectfont \bfseries \BNazaninScaleOne} % B Nazanin 13
+\renewcommand{\cftloftitlefont}{\hspace{5.5cm} \fontsize{13pt}{0}\selectfont \bfseries \BNazaninScaleOne} % B Nazanin 13
+\renewcommand{\cftlottitlefont}{\hspace{5.5cm} \fontsize{13pt}{0}\selectfont \bfseries \BNazaninScaleOne} % B Nazanin 13
+
+\renewcommand{\listfigurename}{\textbf{\fontsize{13pt}{0}\selectfont \BNazaninScaleOne} فهرست شکل‌ها}
+\renewcommand{\listtablename}{\textbf{\fontsize{13pt}{0}\selectfont \BNazaninScaleOne} فهرست جدول‌ها}
+
+\renewcommand{\cftfigpresnum}{شکل }
+\renewcommand{\cftfigaftersnum}{:}
+
+\renewcommand{\cfttabpresnum}{جدول }
+\renewcommand{\cfttabaftersnum}{:}
+
+\renewcommand{\cftchapfont}{\bfseries \fontsize{13pt}{0}\selectfont \BNazaninScaleOne} % B Nazanin 13
+\renewcommand{\cftsecfont}{\fontsize{13pt}{0}\selectfont \BNazaninScaleOne} % B Nazanin 13
+\renewcommand{\cftsubsecfont}{\fontsize{13pt}{0}\selectfont \BNazaninScaleOne} % B Nazanin 13
+\renewcommand{\cftsubsubsecfont}{\fontsize{13pt}{0}\selectfont \BNazaninScaleOne} % B Nazanin 13
+\renewcommand{\cftfigfont}{\fontsize{13pt}{0}\selectfont \BNazaninScaleOne} % B Nazanin 13
+\renewcommand{\cfttabfont}{\fontsize{13pt}{0}\selectfont \BNazaninScaleOne} % B Nazanin 13
+
+\renewcommand\cftchappagefont{\fontsize{13pt}{0}\selectfont \BNazaninScaleOne} % B Nazanin 13
+\renewcommand\cftsecpagefont{\fontsize{13pt}{0}\selectfont \BNazaninScaleOne} % B Nazanin 13
+\renewcommand\cftsubsecpagefont{\fontsize{13pt}{0}\selectfont \BNazaninScaleOne} % B Nazanin 13
+\renewcommand\cftsubsubsecpagefont{\fontsize{13pt}{0}\selectfont \BNazaninScaleOne} % B Nazanin 13
+\renewcommand\cftfigpagefont{\fontsize{13pt}{0}\selectfont \BNazaninScaleOne} % B Nazanin 13
+\renewcommand\cfttabpagefont{\fontsize{13pt}{0}\selectfont \BNazaninScaleOne} % B Nazanin 13
+
+\renewcommand\cftchapafterpnum{\vspace{0cm}}
+\renewcommand\cftsecafterpnum{\vspace{0cm}}
+\renewcommand\cftsubsecafterpnum{\vspace{0cm}}
+\renewcommand\cftsubsubsecafterpnum{\vspace{0cm}}
+
+\renewcommand{\cftdotsep}{0.2}
+
+\setlength\cftchapindent{0cm}
+\setlength\cftsecindent{0cm}
+\setlength\cftsubsecindent{0cm} % table of contents of subsections with no indentation
+%\setlength\cftsubsecindent{0.35cm}
+\setlength\cftsubsubsecindent{0cm}
+\setlength\cftfigindent{0cm}
+\setlength\cfttabindent{0cm}
+
+\makeatletter
+\renewcommand{\numberline}[1]{%
+  \@cftbsnum #1\@cftasnum \hspace*{2mm}\@cftasnumb%
+}
+\makeatother
+
+\addtocontents{toc}{~\textbf{\fontsize{13pt}{0}\selectfont {\BNazaninScaleOne عنوان}}\hfill\textbf{\fontsize{13pt}{0}\selectfont {\BNazaninScaleOne صفحه}}\vspace{0.2cm}\protect\par} % B Nazanin 13
+%\addtocontents{toc}{\protect\vspace*{15pt}}
+\addtocontents{toc}{\protect\vspace*{10pt}}
+%\addtocontents{toc}{\protect\afterpage{\hspace*{-3.9em}\bfseries عنوان \hfill صفحه}}
+%\addtocontents{toc}{\protect\afterpage{\hspace*{-1.3em}\bfseries عنوان \hfill صفحه}}
+\addtocontents{toc}{\protect\afterpage{\hspace*{-0.1em}\bfseries عنوان \hfill صفحه}}
+\addtocontents{toc}{\protect\afterpage{\vspace*{10pt}}}
+\addtocontents{toc}{\protect\afterpage{\protect\afterpage{\hspace*{-2.6em}\bfseries عنوان \hfill صفحه}}}
+\addtocontents{toc}{\protect\afterpage{\protect\afterpage{\vspace*{10pt}}}}
+
+\addtocontents{lof}{~\textbf{\fontsize{13pt}{0}\selectfont {\BNazaninScaleOne عنوان}}\hfill\textbf{\fontsize{13pt}{0}\selectfont {\BNazaninScaleOne صفحه}}\vspace{-0.1cm}\protect\par} % B Nazanin 13
+\addtocontents{lof}{\protect\vspace*{10pt}}
+\addtocontents{lof}{\protect\afterpage{\hspace*{-0.1em}\bfseries عنوان \hfill صفحه}}
+\addtocontents{lof}{\protect\afterpage{\vspace*{10pt}}}
+%\addtocontents{lof}{\protect\afterpage{\protect\afterpage{\hspace*{-1.3em}\bfseries عنوان \hfill صفحه}}}
+%\addtocontents{lof}{\protect\afterpage{\protect\afterpage{\vspace*{25pt}}}}
+
+\addtocontents{lot}{~\textbf{\fontsize{13pt}{0}\selectfont {\BNazaninScaleOne عنوان}}\hfill\textbf{\fontsize{13pt}{0}\selectfont {\BNazaninScaleOne صفحه}}\vspace{-0.1cm}\protect\par} % B Nazanin 13
+\addtocontents{lot}{\protect\vspace*{10pt}}
+%\addtocontents{lot}{\protect\afterpage{\hspace*{-1.3em}\bfseries عنوان \hfill صفحه}}
+%\addtocontents{lot}{\protect\afterpage{\vspace*{25pt}}}
+
+\renewcommand\cftchapaftersnum{:}
+\makeatletter
+\bidi@patchcmd{\Hy@org@chapter}{%
+	\addcontentsline{toc}{chapter}%
+	{\protect\numberline{\thechapter}#1}%
+}{%
+\addcontentsline{toc}{chapter}%
+{\protect\numberline{\chaptername~\tartibi{chapter}}#1}%
+}{}{}
+
+\makeatother
+
+%%
+\makeatletter
+
+\def\DepartmentFa#1{\gdef\@DepartmentFa{#1}}
+\def\@DepartmentFa{}
+
+\def\GroupFa#1{\gdef\@GroupFa{#1}}
+\def\@GroupFa{}
+
+\def\TitleFa#1{\gdef\@TitleFa{#1}}
+\def\@TitleFa{}
+
+\def\ThesisTypeFa#1{\gdef\@ThesisTypeFa{#1}}
+\def\@ThesisTypeFa{}
+
+\def\DegreeFa#1{\gdef\@DegreeFa{#1}}
+\def\@DegreeFa{}
+
+\def\ThesisMark#1{\gdef\@ThesisMark{#1}}
+\def\@ThesisMark{}
+
+
+\def\FieldFa#1{\gdef\@FieldFa{#1}}
+\def\@FieldFa{}
+
+\def\BranchFa#1{\gdef\@BranchFa{#1}}
+\def\@BranchFa{}
+
+\def\YourFullnameFa#1{\gdef\@YourFullnameFa{#1}}
+\def\@YourFullnameFa{}
+
+\def\YourEmailAddress#1{\gdef\@YourEmailAddress{#1}}
+\def\@YourEmailAddress{}
+
+\def\FirstSupervisorFa#1{\gdef\@FirstSupervisorFa{#1}}
+\def\@FirstSupervisorFa{}
+\def\FirstSupervisorAcademicRank#1{\gdef\@FirstSupervisorAcademicRank{#1}}
+\def\@FirstSupervisorAcademicRank{}
+
+\def\SecondSupervisorFa#1{\gdef\ST@SecondSupervisorFa{#1}}
+\def\@SecondSupervisorFa{}
+\def\SecondSupervisorAcademicRank#1{\gdef\@SecondSupervisorAcademicRank{#1}}
+\def\@SecondSupervisorAcademicRank{}
+
+\def\FirstAdvisorFa#1{\gdef\@FirstAdvisorFa{#1}}
+\def\@FirstAdvisorFa{}
+\def\FirstAdvisorAcademicRank#1{\gdef\@FirstAdvisorAcademicRank{#1}}
+\def\@FirstAdvisorAcademicRank{}
+
+\def\SecondAdvisorFa#1{\gdef\ST@SecondAdvisorFa{#1}}
+\def\@SecondAdvisorFa{}
+\def\SecondAdvisorAcademicRank#1{\gdef\@SecondAdvisorAcademicRank{#1}}
+\def\@SecondAdvisorAcademicRank{}
+
+\def\FirstExaminerFa#1{\gdef\ST@FirstExaminerFa{#1}}
+\def\@FirstExaminerFa{}
+\def\FirstExaminerAcademicRank#1{\gdef\@FirstExaminerAcademicRank{#1}}
+\def\@FirstExaminerAcademicRank{}
+
+\def\SecondExaminerFa#1{\gdef\ST@SecondExaminerFa{#1}}
+\def\@SecondExaminerFa{}
+\def\SecondExaminerAcademicRank#1{\gdef\@SecondExaminerAcademicRank{#1}}
+\def\@SecondExaminerAcademicRank{}
+
+\def\ThirdExaminerFa#1{\gdef\ST@ThirdExaminerFa{#1}}
+\def\@ThirdExaminerFa{}
+\def\ThirdExaminerAcademicRank#1{\gdef\@ThirdExaminerAcademicRank{#1}}
+\def\@ThirdExaminerAcademicRank{}
+
+\def\DeanOfDepartmentFa#1{\gdef\@DeanOfDepartmentFa{#1}}
+\def\@DeanOfDepartmentFa{}
+
+\def\YearFa#1{\gdef\@YearFa{#1}}
+\def\@YearFa{}
+
+\def\DateFa#1{\gdef\@DateFa{#1}}
+\def\@DateFa{}
+
+\def\Prefix#1{\gdef\@Prefix{#1}}
+\def\@Prefix{}
+
+\def\DepartmentEn#1{\gdef\@DepartmentEn{#1}}
+\def\@DepartmentEn{}
+
+\def\GroupEn#1{\gdef\@GroupEn{#1}}
+\def\@GroupEn{}
+
+\def\TitleEn#1{\gdef\@TitleEn{#1}}
+\def\@TitleEn{}
+
+\def\DegreeEn#1{\gdef\@DegreeEn{#1}}
+\def\@DegreeEn{}
+
+\def\YourFullnameEn#1{\gdef\@YourFullnameEn{#1}}
+\def\@YourFullnameEn{}
+
+\def\DateEn#1{\gdef\@DateEn{#1}}
+\def\@DateEn{}
+
+\def\FirstSupervisorEn#1{\gdef\@FirstSupervisorEn{#1}}
+\def\@FirstSupervisorEn{}
+
+\def\SecondSupervisorEn#1{\gdef\ST@SecondSupervisorEn{#1}}
+\def\@SecondSupervisorEn{}
+
+\def\FirstAdvisorEn#1{\gdef\@FirstAdvisorEn{#1}}
+\def\@FirstAdvisorEn{}
+
+\def\SecondAdvisorEn#1{\gdef\ST@SecondAdvisorEn{#1}}
+\def\@SecondAdvisorEn{}
+
+\def\FirstExaminerEn#1{\gdef\ST@FirstExaminerEn{#1}}
+\def\@FirstExaminerEn{}
+
+\def\SecondExaminerEn#1{\gdef\ST@SecondExaminerEn{#1}}
+\def\@SecondExaminerEn{}
+
+\def\ThirdExaminerEn#1{\gdef\ST@ThirdExaminerEn{#1}}
+\def\@ThirdExaminerEn{}
+
+\def\FourthExaminerEn#1{\gdef\ST@FourthExaminerEn{#1}}
+\def\@FourthExaminerEn{}
+
+\def\FifthExaminerEn#1{\gdef\ST@FifthExaminerEn{#1}}
+\def\@FifthExaminerEn{}
+
+\def\DeanOfDepartmentEn#1{\gdef\@DeanOfDepartmentEn{#1}}
+\def\@DeanOfDepartmentEn{}
+
+\def\FirstSupervisorEmailAddress#1{\gdef\@FirstSupervisorEmailAddress{#1}}
+\def\@FirstSupervisorEmailAddress{}
+
+\def\SecondSupervisorEmailAddress#1{\gdef\@SecondSupervisorEmailAddress{#1}}
+\def\@SecondSupervisorEmailAddress{}
+
+\makeatother
+
+% ░░░░░░░▒▒▒▒▒▒▓▓▓▓ Title Page ▓▓▓▓▒▒▒▒▒▒░░░░░░░
+\makeatletter
+\newcommand{\MakeTitlePage}{
+\clearpage
+\thispagestyle{empty}
+\newgeometry{left=3.5cm, right=3.5cm, top=3.5cm, bottom=3.5cm}
+{\BNazaninScaleOne
+\begin{center}
+\includegraphics[width = 2.5cm]{Settings/UI_Logo.png}
+\\[0.5cm]
+{\fontsize{13pt}{0}\selectfont % B Nazanin bold 13
+\textbf{
+دانشگاه اصفهان
+}}\\[0.35cm]
+{\fontsize{12pt}{0}\selectfont \textbf{\@DepartmentFa}}\\ [0.3cm] % B Nazanin bold 12
+{\fontsize{11pt}{0}\selectfont \textbf{\@GroupFa}}\\ % B Nazanin bold 11
+\vspace*{\fill}
+{\fontsize{18pt}{0}\selectfont \textbf{\@ThesisTypeFa~\@DegreeFa~\@FieldFa~\@BranchFa}}\\[1.5cm] % B Nazanin bold 18
+{\fontsize{15pt}{0}\selectfont  \BTitrScaleOne \@TitleFa}\\ % B Titr 15
+\vspace*{\fill}
+
+\ifx\ST@SecondSupervisorFa\undefined
+{\fontsize{15pt}{0}\selectfont \textbf{
+استاد راهنما:
+}} \else {\fontsize{15pt}{0}\selectfont \textbf{
+استادهای راهنما:
+}}\fi \\[0.4cm] % B Nazanin 15
+\ifx\ST@SecondSupervisorFa\undefined
+{\fontsize{13pt}{0}\selectfont \textbf{دکتر‍~\@FirstSupervisorFa}}
+\else {\fontsize{13pt}{0}\selectfont \textbf{\@FirstSupervisorFa~~و~~\ST@SecondSupervisorFa}} \fi \\% B Nazanin  bold 13
+\vspace*{\fill}
+
+{\fontsize{15pt}{0}\selectfont \textbf{
+دانشجو:
+}}  \\[0.4cm] % B Nazanin bold 15
+
+{\fontsize{13pt}{0}\selectfont \textbf{\@YourFullnameFa}}\\ % ‌B Nazanin bold 13
+\vspace*{\fill}
+
+{\fontsize{13pt}{0pt}\selectfont \textbf{\@YearFa}} % B Nazanin bold 13
+\end{center}
+}
+\restoregeometry
+}
+
+\makeatother
+
+% ░░░░░░░▒▒▒▒▒▒▓▓▓▓ CopyRight Page ▓▓▓▓▒▒▒▒▒▒░░░░░░░
+\newcommand{\MakeCopyRightPage}{
+\clearpage
+\thispagestyle{empty}
+\vspace*{\fill}
+\hspace*{\fill}
+\begin{minipage}{11cm}
+{\BNazaninScaleOne
+{\fontsize{13pt}{0.9cm}\selectfont  %‌ B Nazanin 13
+\noindent
+{\bfseries
+کليه‌ی حقوق مادی و معنوی مترتب بر دستاوردهای مطالعات، ابتکارات و نوآوری‌های ناشی از پژوهش موضوع اين پايان‌نامه متعلق به دانشگاه اصفهان است. دانشجو موظف به رعایت آیین‌نامه و منشور اخلاق در پژوهش برای ارائه و یا چاپ مطالب مستخرج از رساله‌ی خود می‌باشد.
+
+}}}
+\end{minipage}
+\hspace*{\fill}
+\vspace*{\fill}
+}
+
+% ░░░░░░░▒▒▒▒▒▒▓▓▓▓ Signature Page - Farsi ▓▓▓▓▒▒▒▒▒▒░░░░░░░
+\newcounter{RowNoFa}
+\newcommand\RowNumberFa{\stepcounter{RowNoFa}\arabic{RowNoFa}}
+
+\makeatletter
+\newcommand{\MakeFarsiSignaturePage}{
+\clearpage
+\thispagestyle{empty}
+\newgeometry{left=3.5cm, right=3.5cm, top=3.5cm, bottom=3.5cm}
+{\BNazaninScaleOne
+\begin{center}
+\includegraphics[width = 2.5cm]{Settings/UI_Logo.png}
+\\ [0.5cm]
+{\fontsize{13pt}{0}\selectfont % B Nazanin bold 13
+\textbf{
+دانشگاه اصفهان
+}}\\[0.35cm]
+{\fontsize{12pt}{0}\selectfont \textbf{\@DepartmentFa}}\\ [0.3cm] % B Nazanin bold 12
+{\fontsize{11pt}{0}\selectfont \textbf{\@GroupFa}}\\ % B Nazanin bold 11
+\vspace{3cm}
+
+{\fontsize{18pt}{0}\selectfont \textbf{\@ThesisTypeFa~\@DegreeFa~\@FieldFa~\@BranchFa~ \\ [0.4cm] \@Prefix~\@YourFullnameFa}}\\ % B Nazanin bold 18
+[1cm]
+
+%{\fontsize{18pt}{0}\selectfont \textbf{\@ThesisTypeFa~\@DegreeFa~رشته‌ی~\@FieldFa~گرایش~\@BranchFa~ \\ [0.4cm] \@Prefix~\@YourFullnameFa~تحت عنوان}}\\ % B Nazanin bold 18
+%[1cm]
+
+{\fontsize{15pt}{0}\selectfont  \BTitrScaleOne \textbf{\@TitleFa}} % B Titr 15
+\\ [1cm]
+
+\end{center}
+{\fontsize{13pt}{0}\selectfont % B Nazanin 13
+در تاریخ
+~\@DateFa~
+توسط هیأت داوران بررسی و با درجه‌ی~\textbf{\@ThesisMark}~به تصویب نهایی رسید.‎\\
+\vfill
+
+\noindent
+\begin{tabular}{rrrrrr}
+\RowNumberFa - &
+استاد راهنمای~\@ThesisTypeFa & دکتر~\@FirstSupervisorFa & با مرتبه‌ی علمی~\textbf{\@FirstSupervisorAcademicRank} & امضاء
+\\[1cm]
+\ifx\ST@SecondSupervisorFa\undefined \else
+\RowNumberFa - &
+استاد راهنمای~\@ThesisTypeFa & دکتر~\@SecondSupervisorFa & با مرتبه‌ی علمی~\textbf{\@SecondSupervisorAcademicRank} &   امضاء
+%\\[1cm]
+\fi
+%\RowNumberFa - &
+%استاد مشاور~\@ThesisTypeFa  & دکتر‍~\ST@FirstSupervisorFa & با مرتبه‌ی علمی~\textbf{\@FirstSupervisorAcademicRank} &   امضاء
+%\\[1cm]
+\ifx\ST@SecondAdvisorFa\undefined \else
+%\RowNumberFa - &
+%استاد مشاور~\@ThesisTypeFa  & دکتر‍~\ST@SecondSupervisorFa & با مرتبه‌ی علمی~\textbf{\@SecondSupervisorAcademicRank}   & امضاء
+%\\[1cm]
+\fi
+\ifx\ST@FirstExaminerFa\undefined \else
+\RowNumberFa - &
+استاد داور اول داخل گروه  & دکتر‍~\ST@FirstExaminerFa & با مرتبه‌ی علمی~\textbf{\@FirstExaminerAcademicRank} & امضاء
+\\[1cm]
+\fi
+\ifx\ST@SecondExaminerFa\undefined \else
+\RowNumberFa - &
+استاد داور دوم داخل گروه  & دکتر‍~\ST@SecondExaminerFa & با مرتبه‌ی علمی~\textbf{\@SecondExaminerAcademicRank} & امضاء
+\\[1cm]
+\fi
+\ifx\ST@ThirdExaminerFa\undefined \else
+\RowNumberFa - &
+استاد داور خارج از گروه  & دکتر‍~\ST@ThirdExaminerFa & با مرتبه‌ی علمی~\textbf{\@ThirdExaminerAcademicRank} & امضاء
+\\[1cm]
+\fi
+
+\end{tabular}
+}
+}
+
+\vspace{1.5cm}
+\hfill{مهر و امضاء مدیرگروه}
+\restoregeometry
+}
+
+\makeatother
+
+% ░░░░░░░▒▒▒▒▒▒▓▓▓▓ Farsi Abstract Page ▓▓▓▓▒▒▒▒▒▒░░░░░░░
+%\makeatletter
+%\def\AbstractFa#1{\gdef\@AbstractFa{#1}}
+%\def\@AbstractFa{}
+%
+%\def\KeywordsFa#1{\gdef\@KeywordsFa{#1}}
+%\def\@KeywordsFa{}
+%
+%\newcommand{\MakeFarsiAbstract}{
+%\clearpage
+%\thispagestyle{empty}
+%%\phantomsection
+%%\vspace*{\fill}
+%%\addcontentsline{toc}{section}{چکیده}‎
+%\baselineskip=0.7cm
+%{\fontsize{13pt}{0}\selectfont \BNazaninScaleOne \par \noindent \textbf{چکیده}} \\
+%[0.4cm]
+%{\fontsize{13pt}{0}\selectfont \BNazaninScaleOne \par \noindent \@AbstractFa} \\
+%[0.7cm]
+%{\fontsize{13pt}{0}\selectfont \BNazaninScaleOne \par \noindent \textbf{کلیدواژه‌ها:}} \\ % B Nazanin 13
+%[0.4cm]
+%{\fontsize{12pt}{0}\selectfont \BNazaninScaleOne \par\noindent \@KeywordsFa} % B Nazanin 12
+%}
+%\makeatother
+
+\makeatletter
+\def\AbstractFa#1{\gdef\@AbstractFa{#1}}
+\def\@AbstractFa{}
+
+\def\KeywordsFa#1{\gdef\@KeywordsFa{#1}}
+\def\@KeywordsFa{}
+\makeatother
+
+\makeatletter
+\newcommand{\MakeFarsiAbstract}{
+\clearpage
+\thispagestyle{empty}
+\phantomsection
+%\vspace*{\fill}
+%\addcontentsline{toc}{section}{چکیده}‎
+\baselineskip=0.7cm
+{\BNazaninScaleOne
+{\fontsize{13pt}{0}\selectfont \par\noindent \textbf{چکیده} \baselineskip=0.7cm \\ \@AbstractFa \\ \textbf{کلیدواژه‌ها:} \baselineskip=0.7cm \@KeywordsFa} % B Nazanin 13
+}
+}
+\makeatother
+
+% ░░░░░░░▒▒▒▒▒▒▓▓▓▓ Table of Contents ▓▓▓▓▒▒▒▒▒▒░░░░░░░
+\newcommand{\MakeTableOfContents}{
+\clearpage
+\newgeometry{top=3cm, left=3.5cm, right=3.5cm, bottom=3.5cm, footskip=2cm}
+\baselineskip=0.6cm
+\phantomsection
+%\addcontentsline{toc}{section}{فهرست مطالب}‎
+\tableofcontents
+\restoregeometry
+}
+
+% ░░░░░░░▒▒▒▒▒▒▓▓▓▓ List of Figures ▓▓▓▓▒▒▒▒▒▒░░░░░░░
+\newcommand{\MakeListOfFigures}{
+\clearpage
+\newgeometry{top=3cm, left=3.5cm, right=3.5cm, bottom=3.5cm, footskip=2cm}
+\baselineskip=0.6cm
+\phantomsection
+%\addcontentsline{toc}{section}{\listfigurename}‎
+\listoffigures
+\restoregeometry
+}
+
+% ░░░░░░░▒▒▒▒▒▒▓▓▓▓ List of Tables ▓▓▓▓▒▒▒▒▒▒░░░░░░░
+\newcommand{\MakeListOfTables}{
+\clearpage
+\newgeometry{top=3cm, left=3.5cm, right=3.5cm, bottom=3.5cm, footskip=2cm}
+\baselineskip=0.6cm
+\phantomsection
+%\addcontentsline{toc}{section}{\listtablename}‎
+\listoftables
+\restoregeometry
+}
+
+\makeatother
+
+% ░░░░░░░▒▒▒▒▒▒▓▓▓▓ English Abstract Page ▓▓▓▓▒▒▒▒▒▒░░░░░░░
+\makeatletter
+\def\AbstractEn#1{\gdef\@AbstractEn{#1}}
+\def\@AbstractEn{}
+
+\def\KeywordsEn#1{\gdef\@KeywordsEn{#1}}
+\def\@KeywordsEn{}
+
+\newcommand{\MakeEnglishAbstract}{
+\clearpage
+\thispagestyle{empty}
+\begin{latin}
+\baselineskip=0.6cm
+{\fontsize{12pt}{0}\selectfont \par\noindent \textbf{Abstract}\\ [0.4cm]\@AbstractEn \\ [0.4cm] \textbf{Keywords:} \@KeywordsEn} % TNR 12
+\end{latin}
+}
+\makeatother
+
+% ░░░░░░░▒▒▒▒▒▒▓▓▓▓ Signature Page - English ▓▓▓▓▒▒▒▒▒▒░░░░░░░
+\newcounter{RowNoEn}
+\newcommand\RowNumberEn{\stepcounter{RowNoEn}\arabic{RowNoEn}}
+
+\makeatletter
+\newcommand{\MakeEnglishSignaturePage}{
+\clearpage
+\thispagestyle{empty}
+\newgeometry{left=3.5cm, right=3.5cm, top=3.5cm, bottom=3.5cm}
+\begin{latin}
+{\TimesNewRomanScaleOne
+\begin{center}
+\includegraphics[width=2.5cm]{Settings/UI_Logo.pdf}
+\\ [0.5cm]
+{\fontsize{12pt}{0}\selectfont \textbf{University of Isfahan}}\\[0.2cm] % TNR 12
+{\fontsize{11pt}{0}\selectfont \textbf{{\@DepartmentEn}}}\\ [0.2cm] % TNR 11
+{\fontsize{10pt}{0}\selectfont \textbf{{\@GroupEn}}}\\ % TNR 10
+\vspace*{\fill}
+{\fontsize{16pt}{0}\selectfont \textbf{\@DegreeEn~Thesis}}\\ % TNR 16
+\vspace*{\fill}
+
+{\fontsize{15pt}{0}\selectfont \textbf{\@TitleEn}} % TNR 15
+\vspace*{\fill}
+
+{\fontsize{14pt}{0}\selectfont \textbf{Supervisor:}} % TNR 14
+{\fontsize{13pt}{0}\selectfont \textbf{\\[0.25cm] Dr.~\@FirstSupervisorEn}} % TNR 13
+\vspace*{\fill}
+
+{\fontsize{14pt}{0}\selectfont \textbf{By:\\[0.25cm]}} % TNR 14
+{\fontsize{13pt}{0}\selectfont \textbf{\@YourFullnameEn}} % TNR 13
+\vspace*{\fill}
+
+{\fontsize{13pt}{0}\selectfont \textbf{\@DateEn}} % TNR 13
+\vspace*{\fill}
+
+\end{center}
+}
+\end{latin}
+\restoregeometry
+}
+\makeatother
+
+% ░░░░░░░▒▒▒▒▒▒▓▓▓▓ Appendices ▓▓▓▓▒▒▒▒▒▒░░░░░░░
+\newcommand{\MakeAppendices}{
+\clearpage
+
+\appendix
+
+\setcounter{chapter}{3}
+\setcounter{table}{0}
+\setcounter{figure}{0}
+\setcounter{equation}{0}
+\setcounter{theorem}{0}
+\setcounter{remark}{0}
+\setcounter{reminder}{0}
+
+\phantomsection
+
+\addtocontents{toc}{\protect\setcounter{tocdepth}{-1}}
+\chapter*{پیوست‌ها}
+\addtocontents{toc}{\protect\setcounter{tocdepth}{0}}
+%\addtocontents{toc}{\protect\setcounter{tocdepth}{2}}
+
+\addcontentsline{toc}{chapter}{پیوست‌ها}‎
+}
+
+\makeatother
+% ░░░░░░░▒▒▒▒▒▒▓▓▓▓ References ▓▓▓▓▒▒▒▒▒▒░░░░░░░
+\newcommand{\MakeReferences}{
+\clearpage
+%\phantomsection
+%\section*{مراجع}
+%\addcontentsline{toc}{chapter}{مراجع}
+\titlespacing*{\chapter}{0pt}{-\baselineskip}{0.5cm}
+\fontsize{11pt}{14.4} \selectfont \BNazaninScaleOne \renewcommand{\bibname}{{منابع و مآخذ}\hfill}
+}

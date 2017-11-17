@@ -1,0 +1,292 @@
+% UI-Thesis v1.0
+
+% این قالب بر اساس فرمت پایان‌نامه‌ها و رساله‌های تحصیلات تکمیلی دانشگاه اصفهان تهیه شده است.
+% علیرضا روحی-دانشجوی دکتری گروه مهندسی نرم افزار دانشگاه اصفهان
+% 1395
+% rouhi.ir@gmail.com
+% توصیه می‌شود که از توزیع تک‌لایو (TexLive2015) به بعد استفاده شود:
+% http://tug.org/texlive/acquire-iso.html
+
+% موفق باشید.
+% با تشکر از امین فخاری که قالب اصلی این پایان نامه را برای دانشگاه صنعتی اصفهان تهیه نموده اند.
+% 1395
+% a101.fakhari@gmail.com
+% -----------------------------------------------------------------------------------
+
+% نکات:
+
+% برای آن‌که پردازش فایل و مشاهده خروجی در هنگام نوشتن پایان‌نامه آسان‌تر و سریع‌تر انجام شود، انجام موارد زیر توصیه می گردد:
+% الف) فصل‌ها و بخش‌هایی که در حال نوشتن آن‌ها نیستید را غیر فعال کنید. به‌عنوان مثال، در این قالب، این دستورات را می‌توان در صورت عدم نیاز با اضافه کردن % به طور موقت غیرفعال کرد:
+% \MakeTitlePage
+% \MakeFarsiSignaturePage
+% \input{Chapters/Acknowledgments}
+% \MakeCopyRightPage
+% \input{Chapters/Dedication}
+% \MakeTableOfContents
+% \MakeListOfFigures
+% \MakeListOfTables
+% \MakeFarsiAbstract
+% \input{Chapters/Chapter#}
+% \MakeAppendices
+% \input{Chapters/Appendices}
+% \MakeEnglishAbstract
+% \MakeEnglishSignaturePage
+% ب) از گزینه draft برای فراخوانی کلاس استفاده کنید. یعنی
+% \documentclass[a4paper,fleqn,13pt,twoside,draft]{book}
+% این گزینه حالت چرکنویس را ایفا می‌کند و بر روی بسته‌های مختلف اثرهای متفاوتی دارد. به‌عنوان مثال: به جای شکل، تنها چهارچوب آن نمایش داده شود، لینک‌های hyperref غیر فعال گردد، فایل‌های خارجی را در بسته listings اضافه نمی‌کند و ... و همه این موارد سبب کاهش زمان اجرا و حجم فایل می‌شود.
+
+% در صورتی که میخواهید به سطر بعد بروید اما نمیخواهید بین دو کلمه‌ای که نوشتید فاصله بیفتد کافی است در انتهای خط اول  (بدون فاصله) کاراکتر % را اضافه کنید. با این عمل، لاتک خط فاصله ایجاد شده در اثر تغییر سطر را به عنوان توضیح اضافه یا کامنت در نظر میگیرد و در خروجی اعمال نمی‌کند.
+
+% توصیه می‌شود از شکل‌های برداری با فرمت PDF استفاده شود. این کار علاوه بر افزایش کیفیت رسال/پایان‌نامه/گزارش، باعث کاهش حجم شکل‌ها (و در نتیجه  کاهش حجم فایل نهایی) و همچنین کاهش زمان پردازش می‌شود.
+
+% در این قالب سعی شده است که از تمامی بخش‌های موجود در پایان‌نامه‌ها نمونه‌ای آورده شود.
+
+\documentclass[a4paper,fleqn,11pt,twoside]{book}
+\usepackage{Settings/UI-Thesis}
+\usepackage[nolist]{acronym}
+
+%-----------------------------
+% دستورهای مورد نیاز را در این قسمت اضافه نمایید:
+% Cross-reference commands.
+\newtheorem{thm}{Theorem}[chapter]
+\theoremstyle{definition}
+\newtheorem{defn}[thm]{تعریف}
+
+\newcommand{\xs}[1]{بخش \ref{#1}}
+\newcommand{\xc}[1]{فصل \ref{#1}}
+\newcommand{\xp}[1]{صفحه \pageref{#1}}
+\newcommand{\xf}[1]{شکل \ref{#1}}
+\newcommand{\xt}[1]{جدول \ref{#1}}
+\newcommand{\xa}[1]{پیوست \ref{#1}}
+\newcommand{\xd}[1]{تعریف \ref{#1}}
+\newcommand{\xr}[1]{قانون \ref{#1}}
+\newcommand{\xra}[1]{R \ref{#1}}
+\newcommand{\xl}[1]{کد \ref{#1}}
+\newcommand{\xal}[1]{الگوریتم \ref{#1}}
+
+\algnewcommand\algorithmicforeach{\textbf{for each}}
+\algdef{S}[FOR]{ForEach}[1]{\algorithmicforeach\ #1\ \algorithmicdo}
+%
+%\algnewcommand{\IfThenElse}[3]{% \IfThenElse{<if>}{<then>}{<else>}
+%  \State \algorithmicif\ #1\ \algorithmicthen\ #2\ \algorithmicelse\ #3}
+
+\algdef{SE}[FOR]{NoDoFor}{EndFor}[1]{\algorithmicfor\ #1}{\algorithmicend\ \algorithmicfor}%
+\algdef{SE}[IF]{NoThenIf}{EndIf}[1]{\algorithmicif\ #1}{\algorithmicend\ \algorithmicif}%
+
+\newcommand*\diamondarrow{%
+  \stackengine{0pt}{\hspace{1.2ex}$\rightarrow$}{$\lozenge$}{O}{l}{F}{F}{L}}
+\newcommand*\fdiamondarrow{%
+  \stackengine{0pt}{\hspace{1.2ex}$\rightarrow$}{$\blacklozenge$}{O}{l}{F}{F}{L}}
+\newcommand*\dltriangle{%
+  \stackengine{0pt}{${-}{-}$}{\hspace{3.2ex}$\vartriangleright$}{O}{l}{F}{F}{L}}
+\newcommand*\ltriangle{%
+  \stackengine{0pt}{${-}$\hspace{-.5ex}${-}$}{\hspace{2.8ex}$\vartriangleright$}{O}{l}{F}{F}{L}}
+
+\makeatletter
+\providecommand*{\cupdot}{%
+  \mathbin{%
+    \mathpalette\@cupdot{}%
+  }%
+}
+\newcommand*{\@cupdot}[2]{%
+  \ooalign{%
+    $\m@th#1\cup$\cr
+    \hidewidth$\m@th#1\cdot$\hidewidth
+  }%
+}
+\makeatother
+
+%\DeclareMathSizes{9}{9}{9}{9}
+
+\lstset{escapeinside={/*@}{@*/}}
+%\definecolor{codebackground}{rgb}{0.95,0.95,0.95}
+\definecolor{codebackground}{RGB}{255,255,255}
+\definecolor{commentcolor}{RGB}{77,153,153}
+\definecolor{keywordcolor}{RGB}{153,77,153}
+\lstset{backgroundcolor=\color{codebackground}}
+
+\lstset{
+  captionpos=b,
+  numberstyle=\tiny,
+  %basicstyle=\ttfamily\footnotesize,
+  %basicstyle=\setLTR\thefootnotesize\ttfamily,
+  basicstyle=\setLTR\bfseries\fontsize{8.5pt}{0}\selectfont\ttfamily,
+  columns=flexible,
+  tabsize=2,
+  numbers=none, %left,
+  nolol=true,
+  keywordstyle=\color{keywordcolor},
+  commentstyle=\color{commentcolor},
+  stringstyle=\color{blue},
+  captiondirection=RTL,
+  upquote=true,
+}
+
+\def\lstlistingname{کد}
+
+%\input{listings/EOLFormat}
+%-----------------------------
+
+\begin{document}
+
+%\section*{List of Acronyms}
+\begin{acronym}
+\acro{MDE}{Model-Driven Engineering}
+\end{acronym}
+
+\pagestyle{plain}
+\pagenumbering{harfi}
+%\setcounter{page}{2}
+
+% ░░░░░░░▒▒▒▒▒▒▓▓▓▓ In the Name of Allah ▓▓▓▓▒▒▒▒▒▒░░░░░░░
+\clearpage
+\thispagestyle{empty}
+\newgeometry{left=3.5cm, right=3.5cm, top=3.5cm, bottom=3.5cm}
+\begin{figure}
+  \centering
+\includegraphics[width = \linewidth]{Settings/Allah.png}
+\end{figure}
+% ░░░░░░░▒▒▒▒▒▒▓▓▓▓ Title Page ▓▓▓▓▒▒▒▒▒▒░░░░░░░
+\DepartmentFa{دانشکده مهندسی کامپیوتر}
+\GroupFa{گروه مهندسی نرم‌افزار}
+\ThesisTypeFa{رساله} % Or \ThesisTypeFa{پایان‌نامه} Or \ThesisTypeFa{پیشنهادیه پایان‌نامه}
+\DegreeFa{دکتری} % Or \DegreeFa{کارشناسی ارشد}
+\ThesisMark{عالی} % \ThesisMark{عالی} Or \ThesisMark{بسیارخوب} Or \ThesisMark{خوب}
+\FieldFa{رشته‌ی مهندسی کامپیوتر}
+\BranchFa{گرایش نرم‌افزار}
+\YourFullnameFa{نام و نام خانوادگی دانشجو}
+\FirstSupervisorFa{نام و نام خانوادگی استاد راهنما}
+% \SecondSupervisorFa{نام و نام خانوادگی استاد راهنمای دوم}
+% Optional (Remove It If You Don't Have)
+\YearFa{ماه سال}
+\TitleFa{عنوان رساله}
+
+% اگر عنوان رساله طولانی بود، در دو خط به صورت نشان داده شده تقسیم شود.
+%\TitleFa{قسمت اول عنوان \\ [0.4cm] قسمت دوم عنوان}
+
+\MakeTitlePage
+
+% ░░░░░░░▒▒▒▒▒▒▓▓▓▓ CopyRight ▓▓▓▓▒▒▒▒▒▒░░░░░░░
+\MakeCopyRightPage
+
+% ░░░░░░░▒▒▒▒▒▒▓▓▓▓ Signature - Farsi ▓▓▓▓▒▒▒▒▒▒░░░░░░░
+\Prefix{آقای} %\Prefix{خانم}
+\DateFa{1396/06/11}
+\FirstSupervisorAcademicRank{استادیار} % Or \FirstSupervisorAcademicRank{دانشیار} Or \FirstSupervisorAcademicRank{استاد}
+% \SecondSupervisorAcademicRank{استادیار} % Or \SecondSupervisorAcademicRank{دانشیار} Or \SecondSupervisorAcademicRank{استاد}
+%\FirstAdvisorFa{مشاور اول}
+%\FirstAdvisorAcademicRank{استادیار} % Or \FirstAdvisorAcademicRank{دانشیار} Or \FirstAdvisorAcademicRank{استاد}
+%\SecondAdvisorFa{مشاور دوم} % Optional (Remove It If You Don't Have)
+%\SecondAdvisorAcademicRank{استادیار} % Or \SecondAdvisorAcademicRank{دانشیار} Or \SecondAdvisorAcademicRank{استاد}
+\FirstExaminerFa{نام و نام خانوادگی داور اول داخلی}
+\FirstExaminerAcademicRank{مرتبه علمی} % Or \FirstExaminerAcademicRank{دانشیار} Or \FirstExaminerAcademicRank{استاد}
+\SecondExaminerFa{نام و نام خانوادگی استاد داور دوم داخلی} % Optional (Remove It If You Don't Have)
+\SecondExaminerAcademicRank{مرتبه علمی} % Or \SecondExaminerAcademicRank{دانشیار} Or \SecondExaminerAcademicRank{استاد}
+\ThirdExaminerFa{نام و نام خانوادگی داور خارج} % Optional (Remove It If You Don't Have)
+\ThirdExaminerAcademicRank{مرتبه علمی} % Or \SecondExaminerAcademicRank{دانشیار} Or \SecondExaminerAcademicRank{استاد}
+%\DeanOfDepartmentFa{دکتر تحصیلات تکمیلی دانشکده}
+
+\MakeFarsiSignaturePage
+
+% ░░░░░░░▒▒▒▒▒▒▓▓▓▓ Acknowledgments ▓▓▓▓▒▒▒▒▒▒░░░░░░░
+\input{Chapters/Acknowledgments}
+
+% ░░░░░░░▒▒▒▒▒▒▓▓▓▓ Dedication ▓▓▓▓▒▒▒▒▒▒░░░░░░░
+\input{Chapters/Dedication}
+
+% ░░░░░░░▒▒▒▒▒▒▓▓▓▓ Abstract - Farsi ▓▓▓▓▒▒▒▒▒▒░░░░░░░
+\input{Chapters/AbstractFa}
+\MakeFarsiAbstract
+
+% ░░░░░░░▒▒▒▒▒▒▓▓▓▓ Table of Contents/Figures/Tables ▓▓▓▓▒▒▒▒▒▒░░░░░░░
+\setcounter{page}{0}
+\MakeTableOfContents
+\MakeListOfFigures
+\MakeListOfTables
+
+% ----------------------------------------------------------------------------
+\clearpage
+\pagestyle{myheadings}
+\pagenumbering{arabic}
+\setcounter{page}{1}
+
+% ░░░░░░░▒▒▒▒▒▒▓▓▓▓ Chapters ▓▓▓▓▒▒▒▒▒▒░░░░░░░
+\clearpage
+\baselineskip=0.9cm
+
+\input{Chapters/Chapter1}
+%\input{Chapters/Chapter2}
+%\input{Chapters/Chapter3}
+%\input{Chapters/Chapter4}
+%\input{Chapters/Chapter5}
+%\input{Chapters/Chapter6}
+
+% ░░░░░░░▒▒▒▒▒▒▓▓▓▓ References ▓▓▓▓▒▒▒▒▒▒░░░░░░░
+\MakeReferences
+\bibliographystyle{Settings/ieeetr-fa}
+\bibliography{References}
+
+% ----------------------------------------------------------------------------
+%\clearpage
+\pagestyle{myheadings}
+%\pagenumbering{arabic}
+%\setcounter{page}{1}
+
+% ░░░░░░░▒▒▒▒▒▒▓▓▓▓ Chapters ▓▓▓▓▒▒▒▒▒▒░░░░░░░
+%\clearpage
+%\baselineskip=0.9cm
+\linespread{1.0} % single-line spacing
+%\linespread{1.3} % one and a half line spacing
+%\linespread{1.6} % double-line spacing
+
+\settextfont[Scale=1.2, ItalicFont=*, ItalicFeatures={FakeSlant=0.32}, BoldItalicFont=* Bold, BoldItalicFeatures={FakeSlant=0.32}]{B Nazanin}
+\titleformat{\chapter}[display]
+{\fontsize{15pt}{0}\selectfont  \flushleft  \bfseries \BNazaninScaleOne} % B Nazanin 15
+{\chaptertitlename\ \tartibi{chapter}}{0.3cm}{\fontsize{15pt}{0}\selectfont \BNazaninScaleOne} % B Nazanin 15
+
+\sectionfont{\fontsize{14pt}{\baselineskip}\selectfont \bfseries \BNazaninScaleOne} % B Nazanin 14
+\subsectionfont{\fontsize{13pt}{\baselineskip}\selectfont \bfseries \BNazaninScaleOne} % B Nazanin 13
+\subsubsectionfont{\fontsize{13pt}{\baselineskip}\selectfont \bfseries \BNazaninScaleOne} % B Nazanin 13
+
+%\titlespacing*{\chapter}{0pt}{3.5cm}{8cm}
+\titlespacing*{\section}{0pt}{1.2\baselineskip}{0pt}
+\titlespacing*{\subsection}{0pt}{1.1\baselineskip}{0pt}
+\titlespacing*{\subsubsection}{0pt}{1\baselineskip}{0pt}
+
+\makeatletter
+\renewcommand\chapter{\if@openright\cleardoublepage\else\clearpage\fi
+	%\thispagestyle{empty}
+	\global\@topnum\z@
+	\@afterindentfalse
+	\secdef\@chapter\@schapter}
+\makeatother
+
+% ░░░░░░░▒▒▒▒▒▒▓▓▓▓ Appendices ▓▓▓▓▒▒▒▒▒▒░░░░░░░
+\MakeAppendices
+\addtocontents{lof}{\protect\setcounter{tocdepth}{0}} % ignore adding appendix figures to list of figures
+\addtocontents{lot}{\protect\setcounter{tocdepth}{0}} % ignore adding appendix table to list of tables
+\captionsetup{list=no}
+
+\input{Chapters/Appendices}
+
+% ░░░░░░░▒▒▒▒▒▒▓▓▓▓ Abstract - English ▓▓▓▓▒▒▒▒▒▒░░░░░░░
+\input{Chapters/AbstractEn}
+\MakeEnglishAbstract
+
+% ░░░░░░░▒▒▒▒▒▒▓▓▓▓ Signature - English ▓▓▓▓▒▒▒▒▒▒░░░░░░░
+\DepartmentEn{Faculty of Computer Engineering}
+\DegreeEn{Ph.D.} % Or \DegreeEn{M.Sc.)} 
+\YourFullnameEn{Student First and Last Name}
+\DateEn{Month Year} %
+\FirstSupervisorEn{Supervisor First and Last Name}
+%\SecondSupervisorEn{Second Supervisor, Prof.} % Optional (Remove It If You Don't Have)
+\TitleEn{Thesis English Title} 
+%\\[0.2cm] second line (if any)} %% Break the title, if required
+% اگر عنوان رساله طولانی بود، در دو خط به صورت نشان داده شده تقسیم شود.
+\GroupEn{Department of Software Engineering}
+\FirstAdvisorEn{First Advisor, Assoc. Prof.}
+
+\MakeEnglishSignaturePage
+
+\end{document} 
+
