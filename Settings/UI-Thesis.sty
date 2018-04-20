@@ -736,13 +736,21 @@
 
 \makeatother
 % ░░░░░░░▒▒▒▒▒▒▓▓▓▓ References ▓▓▓▓▒▒▒▒▒▒░░░░░░░
-\newcommand{\MakeReferences}{
+\newcommand{\MakeReferences}[1]{
 \clearpage
-%\phantomsection
-%\section*{مراجع}
-%\addcontentsline{toc}{chapter}{مراجع}
 \titlespacing*{\chapter}{0pt}{-\baselineskip}{0.5cm}
 \fontsize{11pt}{14.4} \selectfont \BNazaninScaleOne \renewcommand{\bibname}{{منابع و مآخذ}\hfill}
+\bibliographystyle{Settings/ieeetr-fa}
+
+\addtocontents{toc}{\protect\vspace{10pt}}
+\addcontentsline{toc}{section}{منابع و مآخذ}
+
+\let\oldaddcontentsline\addcontentsline% Store \addcontentsline
+\renewcommand{\addcontentsline}[3]{}% Make \addcontentsline a no-op
+
+\bibliography{#1}
+
+\let\addcontentsline\oldaddcontentsline% Restore \addcontentsline
 }
 
 % دستوری برای تعریف واژه‌نامه انگلیسی به فارسی
