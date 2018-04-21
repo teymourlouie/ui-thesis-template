@@ -165,7 +165,7 @@
 \subsectionfont{\fontsize{13pt}{\baselineskip}\selectfont \bfseries \BNazaninScaleOne} % B Nazanin 13
 \subsubsectionfont{\fontsize{13pt}{\baselineskip}\selectfont \bfseries \BNazaninScaleOne} % B Nazanin 13
 
-\titlespacing*{\chapter}{0pt}{2.5cm}{6cm}
+\titlespacing*{\chapter}{0pt}{3.5cm}{8cm}
 \titlespacing*{\section}{0pt}{1.2\baselineskip}{0pt}
 \titlespacing*{\subsection}{0pt}{1.1\baselineskip}{0pt}
 \titlespacing*{\subsubsection}{0pt}{1\baselineskip}{0pt}
@@ -249,17 +249,16 @@
 }
 \makeatother
 
-\addtocontents{toc}{~\textbf{\fontsize{13pt}{0}\selectfont {\BNazaninScaleOne عنوان}}\hfill\textbf{\fontsize{13pt}{0}\selectfont {\BNazaninScaleOne صفحه}}\vspace{0.2cm}\protect\par} % B Nazanin 13
+\addtocontents{toc}{~\textbf{\fontsize{13pt}{0}\selectfont {\BNazaninScaleOne عنوان}}\hfill\textbf{\fontsize{13pt}{0}\selectfont {\BNazaninScaleOne صفحه}}\vspace{-0.3cm}\protect\par} % B Nazanin 13
 \addtocontents{toc}{\protect\vspace*{10pt}}
-%\addtocontents{toc}{\protect\afterpage{\hspace*{-3.9em}\bfseries عنوان \hfill صفحه}}
-\addtocontents{toc}{\protect\afterpage{\hspace*{-0.1em}\bfseries عنوان \hfill صفحه}}
+\addtocontents{toc}{\protect\afterpage{\hspace*{-1.7em}\bfseries عنوان \hfill صفحه}}
 \addtocontents{toc}{\protect\afterpage{\vspace*{10pt}}}
-\addtocontents{toc}{\protect\afterpage{\protect\afterpage{\hspace*{-2.6em}\bfseries عنوان \hfill صفحه}}}
+\addtocontents{toc}{\protect\afterpage{\protect\afterpage{\hspace*{-1.1em}\bfseries عنوان \hfill صفحه}}}
 \addtocontents{toc}{\protect\afterpage{\protect\afterpage{\vspace*{10pt}}}}
 
 \addtocontents{lof}{~\textbf{\fontsize{13pt}{0}\selectfont {\BNazaninScaleOne عنوان}}\hfill\textbf{\fontsize{13pt}{0}\selectfont {\BNazaninScaleOne صفحه}}\vspace{-0.1cm}\protect\par} % B Nazanin 13
 \addtocontents{lof}{\protect\vspace*{10pt}}
-\addtocontents{lof}{\protect\afterpage{\hspace*{-0.1em}\bfseries عنوان \hfill صفحه}}
+\addtocontents{lof}{\protect\afterpage{\bfseries عنوان \hfill صفحه}}
 \addtocontents{lof}{\protect\afterpage{\vspace*{10pt}}}
 
 \addtocontents{lot}{~\textbf{\fontsize{13pt}{0}\selectfont {\BNazaninScaleOne عنوان}}\hfill\textbf{\fontsize{13pt}{0}\selectfont {\BNazaninScaleOne صفحه}}\vspace{-0.1cm}\protect\par} % B Nazanin 13
@@ -433,7 +432,7 @@
 {\fontsize{12pt}{0}\selectfont \textbf{\@DepartmentFa}}\\ [0.3cm] % B Nazanin bold 12
 {\fontsize{11pt}{0}\selectfont \textbf{\@GroupFa}}\\ % B Nazanin bold 11
 \vspace*{\fill}
-{\fontsize{18pt}{0}\selectfont \textbf{\@ThesisTypeFa~\@DegreeFa~\@FieldFa~\@BranchFa}}\\[1.5cm] % B Nazanin bold 18
+{\fontsize{18pt}{0}\selectfont \textbf{\@ThesisTypeFa~\@DegreeFa~رشته‌ی~\@FieldFa~گرایش~\@BranchFa}}\\[1.5cm] % B Nazanin bold 18
 {\fontsize{15pt}{0}\selectfont  \BTitrScaleOne \@TitleFa}\\ % B Titr 15
 \vspace*{\fill}
 
@@ -441,13 +440,24 @@
 {\fontsize{15pt}{0}\selectfont \textbf{
 استاد راهنما:
 }} \else {\fontsize{15pt}{0}\selectfont \textbf{
-استادهای راهنما:
+استادان راهنما:
 }}\fi \\[0.4cm] % B Nazanin 15
 \ifx\ST@SecondSupervisorFa\undefined
 {\fontsize{13pt}{0}\selectfont \textbf{دکتر‍~\@FirstSupervisorFa}}
 \else {\fontsize{13pt}{0}\selectfont \textbf{دکتر‍~\@FirstSupervisorFa~~و~~دکتر‍~\ST@SecondSupervisorFa}} \fi \\% B Nazanin  bold 13
 \vspace*{\fill}
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\ifx\ST@SecondAdvisorFa\undefined
+{\fontsize{15pt}{0}\selectfont \textbf{
+استاد مشاور:
+}} \else {\fontsize{15pt}{0}\selectfont \textbf{
+استادان مشاور:
+}}\fi \\[0.4cm] % B Nazanin 15
+\ifx\ST@SecondAdvisorFa\undefined
+{\fontsize{13pt}{0}\selectfont \textbf{دکتر‍~\@FirstAdvisorFa}}
+\else {\fontsize{13pt}{0}\selectfont \textbf{دکتر‍~\@FirstAdvisorFa \\[0.4cm] دکتر‍~\ST@SecondAdvisorFa}} \fi \\% B Nazanin  bold 13
+\vspace*{\fill}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 {\fontsize{15pt}{0}\selectfont \textbf{
 دانشجو:
 }}  \\[0.4cm] % B Nazanin bold 15
@@ -503,7 +513,7 @@
 {\fontsize{11pt}{0}\selectfont \textbf{\@GroupFa}}\\ % B Nazanin bold 11
 \vspace{3cm}
 
-{\fontsize{18pt}{0}\selectfont \textbf{\@ThesisTypeFa~\@DegreeFa~\@FieldFa~\@BranchFa~ \\ [0.4cm] \@Prefix~\@YourFullnameFa}}\\ % B Nazanin bold 18
+{\fontsize{18pt}{0}\selectfont \textbf{\@ThesisTypeFa~\@DegreeFa~رشته‌ی~\@FieldFa~گرایش~\@BranchFa\\ [0.4cm]~\@Prefix~\@YourFullnameFa}}\\ % B Nazanin bold 18
 [1cm]
 
 {\fontsize{15pt}{0}\selectfont  \BTitrScaleOne \textbf{\@TitleFa}} % B Titr 15
@@ -526,22 +536,24 @@
 استاد راهنمای~\@ThesisTypeFa & دکتر~\ST@SecondSupervisorFa & با مرتبه‌ی علمی~\textbf{\@SecondSupervisorAcademicRank} &   امضاء
 \\[1cm]
 \fi
-%\RowNumberFa - &
-%استاد مشاور~\@ThesisTypeFa  & دکتر‍~\ST@FirstSupervisorFa & با مرتبه‌ی علمی~\textbf{\@FirstSupervisorAcademicRank} &   امضاء
-%\\[1cm]
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\RowNumberFa - &
+استاد مشاور~\@ThesisTypeFa  & دکتر‍~\@FirstAdvisorFa & با مرتبه‌ی علمی~\textbf{\@FirstAdvisorAcademicRank} &   امضاء
+\\[1cm]
 \ifx\ST@SecondAdvisorFa\undefined \else
-%\RowNumberFa - &
-%استاد مشاور~\@ThesisTypeFa  & دکتر‍~\ST@SecondSupervisorFa & با مرتبه‌ی علمی~\textbf{\@SecondSupervisorAcademicRank}   & امضاء
-%\\[1cm]
+\RowNumberFa - &
+استاد مشاور~\@ThesisTypeFa  & دکتر‍~\ST@SecondAdviorFa & با مرتبه‌ی علمی~\textbf{\@SecondAdvisorAcademicRank}   & امضاء
+\\[1cm]
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \fi
 \ifx\ST@FirstExaminerFa\undefined \else
 \RowNumberFa - &
-استاد داور اول داخل گروه  & دکتر‍~\ST@FirstExaminerFa & با مرتبه‌ی علمی~\textbf{\@FirstExaminerAcademicRank} & امضاء
+استاد داور داخل گروه  & دکتر‍~\ST@FirstExaminerFa & با مرتبه‌ی علمی~\textbf{\@FirstExaminerAcademicRank} & امضاء
 \\[1cm]
 \fi
 \ifx\ST@SecondExaminerFa\undefined \else
 \RowNumberFa - &
-استاد داور دوم داخل گروه  & دکتر‍~\ST@SecondExaminerFa & با مرتبه‌ی علمی~\textbf{\@SecondExaminerAcademicRank} & امضاء
+استاد داور داخل گروه  & دکتر‍~\ST@SecondExaminerFa & با مرتبه‌ی علمی~\textbf{\@SecondExaminerAcademicRank} & امضاء
 \\[1cm]
 \fi
 \ifx\ST@ThirdExaminerFa\undefined \else
@@ -611,7 +623,7 @@
 % ░░░░░░░▒▒▒▒▒▒▓▓▓▓ Table of Contents ▓▓▓▓▒▒▒▒▒▒░░░░░░░
 \newcommand{\MakeTableOfContents}{
 \clearpage
-\newgeometry{top=3cm, left=3.5cm, right=3.5cm, bottom=3.5cm, footskip=2cm}
+\newgeometry{top=3.5cm, left=3.5cm, right=3.5cm, bottom=3.5cm, footskip=1cm}
 \baselineskip=0.6cm
 \phantomsection
 %\addcontentsline{toc}{section}{فهرست مطالب}‎
@@ -622,7 +634,7 @@
 % ░░░░░░░▒▒▒▒▒▒▓▓▓▓ List of Figures ▓▓▓▓▒▒▒▒▒▒░░░░░░░
 \newcommand{\MakeListOfFigures}{
 \clearpage
-\newgeometry{top=3cm, left=3.5cm, right=3.5cm, bottom=3.5cm, footskip=2cm}
+\newgeometry{top=3.5cm, left=3.5cm, right=3.5cm, bottom=3.5cm, footskip=1cm}
 \baselineskip=0.6cm
 \phantomsection
 %\addcontentsline{toc}{section}{\listfigurename}‎
@@ -633,7 +645,7 @@
 % ░░░░░░░▒▒▒▒▒▒▓▓▓▓ List of Tables ▓▓▓▓▒▒▒▒▒▒░░░░░░░
 \newcommand{\MakeListOfTables}{
 \clearpage
-\newgeometry{top=3cm, left=3.5cm, right=3.5cm, bottom=3.5cm, footskip=2cm}
+\newgeometry{top=3.5cm, left=3.5cm, right=3.5cm, bottom=3.5cm, footskip=1cm}
 \baselineskip=0.6cm
 \phantomsection
 %\addcontentsline{toc}{section}{\listtablename}‎
@@ -729,7 +741,7 @@
 
 \addtocontents{toc}{\protect\setcounter{tocdepth}{-1}}
 \chapter*{پیوست‌ها}
-\addtocontents{toc}{\protect\setcounter{tocdepth}{0}}
+\addtocontents{toc}{\protect\setcounter{tocdepth}{2}}
 
 \addcontentsline{toc}{chapter}{پیوست‌ها}‎
 }
