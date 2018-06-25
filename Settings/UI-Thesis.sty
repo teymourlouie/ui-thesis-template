@@ -52,6 +52,7 @@
 % ░░░░░░░▒▒▒▒▒▒▓▓▓▓ Settings ▓▓▓▓▒▒▒▒▒▒░░░░░░░
 \settextfont[Scale=1.2, ItalicFont=*, ItalicFeatures={FakeSlant=0.32}, BoldItalicFont=* Bold, BoldItalicFeatures={FakeSlant=0.32}]{B Nazanin}
 \setlatintextfont[Scale=1]{Times New Roman} % 11pt
+\setdigitfont{Parsi Digits}
 
 \defpersianfont\BNazaninScaleOne[Scale=1]{B Nazanin}
 \defpersianfont\BTitrScaleOne[Scale=1]{B Titr}
@@ -322,7 +323,7 @@
 \def\SecondSupervisorAcademicRank#1{\gdef\@SecondSupervisorAcademicRank{#1}}
 \def\@SecondSupervisorAcademicRank{}
 
-\def\FirstAdvisorFa#1{\gdef\@FirstAdvisorFa{#1}}
+\def\FirstAdvisorFa#1{\gdef\ST@FirstAdvisorFa{#1}}
 \def\@FirstAdvisorFa{}
 \def\FirstAdvisorAcademicRank#1{\gdef\@FirstAdvisorAcademicRank{#1}}
 \def\@FirstAdvisorAcademicRank{}
@@ -346,6 +347,11 @@
 \def\@ThirdExaminerFa{}
 \def\ThirdExaminerAcademicRank#1{\gdef\@ThirdExaminerAcademicRank{#1}}
 \def\@ThirdExaminerAcademicRank{}
+
+\def\FourthExaminerFa#1{\gdef\ST@FourthExaminerFa{#1}}
+\def\@FourthExaminerFa{}
+\def\FourthExaminerAcademicRank#1{\gdef\@FourthExaminerAcademicRank{#1}}
+\def\@FourthExaminerAcademicRank{}
 
 \def\DeanOfDepartmentFa#1{\gdef\@DeanOfDepartmentFa{#1}}
 \def\@DeanOfDepartmentFa{}
@@ -444,9 +450,11 @@
 }}\fi \\[0.4cm] % B Nazanin 15
 \ifx\ST@SecondSupervisorFa\undefined
 {\fontsize{13pt}{0}\selectfont \textbf{دکتر‍~\@FirstSupervisorFa}}
-\else {\fontsize{13pt}{0}\selectfont \textbf{دکتر‍~\@FirstSupervisorFa~~و~~دکتر‍~\ST@SecondSupervisorFa}} \fi \\% B Nazanin  bold 13
+\else {\fontsize{13pt}{0}\selectfont \textbf{دکتر‍~\@FirstSupervisorFa \\[0.4cm] دکتر‍~\ST@SecondSupervisorFa}} \fi \\% B Nazanin  bold 13
 \vspace*{\fill}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\ifx\ST@FirstAdvisorFa\undefined \else
+{
 \ifx\ST@SecondAdvisorFa\undefined
 {\fontsize{15pt}{0}\selectfont \textbf{
 استاد مشاور:
@@ -454,9 +462,11 @@
 استادان مشاور:
 }}\fi \\[0.4cm] % B Nazanin 15
 \ifx\ST@SecondAdvisorFa\undefined
-{\fontsize{13pt}{0}\selectfont \textbf{دکتر‍~\@FirstAdvisorFa}}
-\else {\fontsize{13pt}{0}\selectfont \textbf{دکتر‍~\@FirstAdvisorFa \\[0.4cm] دکتر‍~\ST@SecondAdvisorFa}} \fi \\% B Nazanin  bold 13
+{\fontsize{13pt}{0}\selectfont \textbf{دکتر‍~\ST@FirstAdvisorFa}}
+\else {\fontsize{13pt}{0}\selectfont \textbf{دکتر‍~\ST@FirstAdvisorFa \\[0.4cm] دکتر‍~\ST@SecondAdvisorFa}} \fi \\% B Nazanin  bold 13
 \vspace*{\fill}
+} 
+\fi
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 {\fontsize{15pt}{0}\selectfont \textbf{
 دانشجو:
@@ -537,15 +547,17 @@
 \\[1cm]
 \fi
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\ifx\ST@FirstAdvisorFa\undefined \else
 \RowNumberFa - &
-استاد مشاور~\@ThesisTypeFa  & دکتر‍~\@FirstAdvisorFa & با مرتبه‌ی علمی~\textbf{\@FirstAdvisorAcademicRank} &   امضاء
+استاد مشاور~\@ThesisTypeFa  & دکتر‍~\ST@FirstAdvisorFa & با مرتبه‌ی علمی~\textbf{\@FirstAdvisorAcademicRank} &   امضاء
 \\[1cm]
+\fi
 \ifx\ST@SecondAdvisorFa\undefined \else
 \RowNumberFa - &
-استاد مشاور~\@ThesisTypeFa  & دکتر‍~\ST@SecondAdviorFa & با مرتبه‌ی علمی~\textbf{\@SecondAdvisorAcademicRank}   & امضاء
+استاد مشاور~\@ThesisTypeFa  & دکتر‍~\ST@SecondAdvisorFa & با مرتبه‌ی علمی~\textbf{\@SecondAdvisorAcademicRank}   & امضاء
 \\[1cm]
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \fi
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \ifx\ST@FirstExaminerFa\undefined \else
 \RowNumberFa - &
 استاد داور داخل گروه  & دکتر‍~\ST@FirstExaminerFa & با مرتبه‌ی علمی~\textbf{\@FirstExaminerAcademicRank} & امضاء
@@ -559,6 +571,11 @@
 \ifx\ST@ThirdExaminerFa\undefined \else
 \RowNumberFa - &
 استاد داور خارج از گروه  & دکتر‍~\ST@ThirdExaminerFa & با مرتبه‌ی علمی~\textbf{\@ThirdExaminerAcademicRank} & امضاء
+\\[1cm]
+\fi
+\ifx\ST@FourthExaminerFa\undefined \else
+\RowNumberFa - &
+استاد داور خارج از گروه  & دکتر‍~\ST@FourthExaminerFa & با مرتبه‌ی علمی~\textbf{\@FourthExaminerAcademicRank} & امضاء
 \\[1cm]
 \fi
 
