@@ -166,7 +166,7 @@
 \subsectionfont{\fontsize{13pt}{\baselineskip}\selectfont \bfseries \BNazaninScaleOne} % B Nazanin 13
 \subsubsectionfont{\fontsize{13pt}{\baselineskip}\selectfont \bfseries \BNazaninScaleOne} % B Nazanin 13
 
-\titlespacing*{\chapter}{0pt}{3.5cm}{6cm}
+\titlespacing*{\chapter}{0pt}{2.75cm}{6.75cm}
 \titlespacing*{\section}{0pt}{1.2\baselineskip}{0pt}
 \titlespacing*{\subsection}{0pt}{1.1\baselineskip}{0pt}
 \titlespacing*{\subsubsection}{0pt}{1\baselineskip}{0pt}
@@ -644,6 +644,7 @@
 \baselineskip=0.6cm
 \phantomsection
 %\addcontentsline{toc}{section}{فهرست مطالب}‎
+\topskip=0pt
 \tableofcontents
 \restoregeometry
 }
@@ -655,6 +656,7 @@
 \baselineskip=0.6cm
 \phantomsection
 %\addcontentsline{toc}{section}{\listfigurename}‎
+\topskip=0pt
 \listoffigures
 \restoregeometry
 }
@@ -666,6 +668,7 @@
 \baselineskip=0.6cm
 \phantomsection
 %\addcontentsline{toc}{section}{\listtablename}‎
+\topskip=0pt
 \listoftables
 \restoregeometry
 }
@@ -683,8 +686,9 @@
 \newcommand{\MakeEnglishAbstract}{
 \clearpage
 \thispagestyle{empty}
+
 \begin{latin}
-\baselineskip=0.6cm
+\baselineskip=18pt
 {\fontsize{12pt}{0}\selectfont \par\noindent \textbf{Abstract}\\ [0.4cm]\@AbstractEn \\ [0.4cm] \textbf{Keywords:} \@KeywordsEn} % TNR 12
 \end{latin}
 }
