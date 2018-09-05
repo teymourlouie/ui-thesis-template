@@ -48,6 +48,9 @@
 \usepackage{stackengine}
 \usepackage{enumitem}
 \usepackage{pdflscape}
+% put perpage package at the end
+\usepackage{perpage}
+
 
 % ░░░░░░░▒▒▒▒▒▒▓▓▓▓ Settings ▓▓▓▓▒▒▒▒▒▒░░░░░░░
 \settextfont[Scale=1.2, ItalicFont=*, ItalicFeatures={FakeSlant=0.32}, BoldItalicFont=* Bold, BoldItalicFeatures={FakeSlant=0.32}]{B Nazanin}
@@ -101,6 +104,8 @@
 \captionsetup[figure]{belowskip=-\baselineskip}
 \captionsetup[table]{aboveskip=2mm}
 \captionsetup[table]{belowskip=\baselineskip}
+\captionsetup[algorithm]{aboveskip=2mm}
+\captionsetup[algorithm]{belowskip=\baselineskip}
 
 %%
 %\setmathfont[version=lm]{Latin Modern Math}
@@ -160,7 +165,7 @@
 %%
 \titleformat{\chapter}[display]
 {\fontsize{15pt}{0}\selectfont  \flushleft  \bfseries \BNazaninScaleOne} % B Nazanin 15
-{\chaptertitlename\ \tartibi{chapter}}{0.3cm}{\fontsize{15pt}{0}\selectfont \BNazaninScaleOne} % B Nazanin 15
+{\chaptertitlename\ \tartibi{chapter}}{0.3cm}{\fontsize{15pt}{0}\selectfont \BNazaninScaleOne\setcounter{footnote}{0}} % B Nazanin 15
 
 \sectionfont{\fontsize{14pt}{\baselineskip}\selectfont \bfseries \BNazaninScaleOne} % B Nazanin 14
 \subsectionfont{\fontsize{13pt}{\baselineskip}\selectfont \bfseries \BNazaninScaleOne} % B Nazanin 13
@@ -187,7 +192,8 @@
 \setlist[description]{noitemsep, topsep=0pt}
 
 %%
-\zmakeperpage{footnote}
+%\zmakeperpage{footnote}
+\MakePerPage{footnote}
 \setlength{\footnotesep}{0.4cm}
 \renewcommand{\footnotesize}{\bfseries\fontsize{11pt}{0}\selectfont} 
 \renewcommand{\thefootnote}{\bfseries\fontsize{6.5pt}{0}\selectfont\arabic{footnote}}
@@ -209,6 +215,7 @@
 
 \renewcommand{\listfigurename}{\textbf{\fontsize{13pt}{0}\selectfont \BNazaninScaleOne} فهرست شکل‌ها}
 \renewcommand{\listtablename}{\textbf{\fontsize{13pt}{0}\selectfont \BNazaninScaleOne} فهرست جدول‌ها}
+\renewcommand{\listalgorithmname}{\textbf{\fontsize{13pt}{0}\selectfont \BNazaninScaleOne} \hfill فهرست الگوریتم‌ها \hfill\vspace{-6cm}}
 
 \renewcommand{\cftfigpresnum}{شکل }
 \renewcommand{\cftfigaftersnum}{:}
@@ -267,6 +274,8 @@
 %\addtocontents{lot}{\protect\afterpage{\hspace*{-1.3em}\bfseries عنوان \hfill صفحه}}
 %\addtocontents{lot}{\protect\afterpage{\vspace*{25pt}}}
 
+\addtocontents{loa}{~\textbf{\fontsize{13pt}{0}\selectfont {\BNazaninScaleOne عنوان}}\hfill\textbf{\fontsize{13pt}{0}\selectfont {\BNazaninScaleOne صفحه}}\vspace{-0.1cm}\protect\par} % B Nazanin 13
+\addtocontents{loa}{\protect\vspace*{10pt}}
 \renewcommand\cftchapaftersnum{:}
 \makeatletter
 \bidi@patchcmd{\Hy@org@chapter}{%
@@ -484,6 +493,7 @@
 \makeatother
 
 % ░░░░░░░▒▒▒▒▒▒▓▓▓▓ CopyRight Page ▓▓▓▓▒▒▒▒▒▒░░░░░░░
+\makeatletter
 \newcommand{\MakeCopyRightPage}{
 \clearpage
 \thispagestyle{empty}
@@ -493,15 +503,31 @@
 {\BNazaninScaleOne
 {\fontsize{13pt}{0.9cm}\selectfont  %‌ B Nazanin 13
 \noindent
-{\bfseries
-کليه‌ی حقوق مادی و معنوی مترتب بر دستاوردهای مطالعات، ابتکارات و نوآوری‌های ناشی از پژوهش موضوع اين پايان‌نامه متعلق به دانشگاه اصفهان است. دانشجو موظف به رعایت آیین‌نامه و منشور اخلاق در پژوهش برای ارائه و یا چاپ مطالب مستخرج از رساله‌ی خود می‌باشد.
+{
+\begin{center}
+ \bfseries\fontsize{18pt}{0.9cm}\selectfont
+ تعهد نامه اصالت اثر
+\end{center}
+اینجانب  \textbf{\@YourFullnameFa}\ دانشجوی مقطع \textbf{\@DegreeFa} \ رشته \textbf{\@FieldFa} \ گرایش  \textbf{\@BranchFa} \ متعهد می‌شوم که مطالب مندرج در این رساله و برون‌دادهای منتشره در این رابطه حاصل کار پژوهشی اینجانب است و به دستاوردهای پژوهشی دیگران که در این پژوهش از آنها استفاده شده است، مطابق مقررات ارجاع و در فهرست منابع و مآخذ ذکر گردیده است. این رساله قبلا برای احراز هیچ مدرک هم سطح یا بالاتر ارائه نشده است. لذا در صورت اثبات تخلف (در هر زمان ) دانشگاه اصفهان حق دارد مدرک تحصیلی صادر شده برای اینجانب را از اعتبار ساقط و ضمن درج عام موضوع در جراید کثیر الانتشار، کلیه امتیازات و حقوقی که به موجب آن در طی دوره تحصیل و مدت زمان بعد از فراغت از تحصیل تا اثبات تخلف به ذینفعان تعلق گرفته را مسترد گرداند.
 
+کلیه حقوق مادی و معنوی این اثر متعلق به دانشگاه اصفهان است.
+\\[1cm]
+نام و نام خانوادگی دانشجو: \textbf{\@YourFullnameFa} \hfill امضاء
+\\[1cm]
+\ifx\ST@SecondSupervisorFa\undefined
+تایید استاد راهنما: \textbf{دکتر~\@FirstSupervisorFa} \hfill امضاء
+\else
+تایید استاد راهنمای اول: \textbf{دکتر~\@FirstSupervisorFa} \hfill امضاء
+\\[1cm]
+تایید استاد راهنمای دوم: \textbf{دکتر~\ST@SecondSupervisorFa} \hfill امضاء
+
+\fi
 }}}
 \end{minipage}
 \hspace*{\fill}
 \vspace*{\fill}
 }
-
+\makeatother
 % ░░░░░░░▒▒▒▒▒▒▓▓▓▓ Signature Page - Farsi ▓▓▓▓▒▒▒▒▒▒░░░░░░░
 \newcounter{RowNoFa}
 \newcommand\RowNumberFa{\stepcounter{RowNoFa}\arabic{RowNoFa}}
@@ -673,6 +699,18 @@
 \restoregeometry
 }
 
+% ░░░░░░░▒▒▒▒▒▒▓▓▓▓ List of Algorithms ▓▓▓▓▒▒▒▒▒▒░░░░░░░
+\newcommand{\MakeListOfAlgorithms}{
+\clearpage
+\newgeometry{top=3.5cm, left=3.5cm, right=3.5cm, bottom=3.5cm, footskip=1cm}
+\baselineskip=0.6cm
+\phantomsection
+%\addcontentsline{toc}{section}{\listalgorithmname}‎
+\topskip=0pt
+\listofalgorithms
+\restoregeometry
+}
+
 \makeatother
 
 % ░░░░░░░▒▒▒▒▒▒▓▓▓▓ English Abstract Page ▓▓▓▓▒▒▒▒▒▒░░░░░░░
@@ -752,6 +790,7 @@
 
 \setcounter{chapter}{3}
 \setcounter{table}{0}
+\setcounter{algorithm}{0}
 \setcounter{figure}{0}
 \setcounter{equation}{0}
 \setcounter{theorem}{0}
