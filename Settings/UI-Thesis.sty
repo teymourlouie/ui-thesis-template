@@ -832,3 +832,7 @@
 
 % تغییر فرمت شماره‌گذاری الگوریتم‌ها به ۴-۹
 \renewcommand{\thealgorithm}{\arabic{chapter}-\arabic{algorithm}} 
+% تنظیم کاراکتر مورد استفاده در لیست‌های غیرترتیبی Bullet list
+\renewcommand{\descriptionlabel}[1]%
+{\hspace{\labelsep} $\checkmark$ \hspace{\labelsep}\textbf{#1}}
+\renewcommand\labelitemi{$\bullet$}
