@@ -195,8 +195,8 @@
 %\zmakeperpage{footnote}
 \MakePerPage{footnote}
 \setlength{\footnotesep}{0.4cm}
-\renewcommand{\footnotesize}{\bfseries\fontsize{11pt}{0}\selectfont} 
-\renewcommand{\thefootnote}{\bfseries\fontsize{6.5pt}{0}\selectfont\arabic{footnote}}
+\renewcommand{\footnotesize}{\fontsize{9pt}{0}\selectfont} 
+\renewcommand{\thefootnote}{\fontsize{6.5pt}{0}\selectfont\arabic{footnote}}
 \setlength{\footnotemargin}{0.2cm}
 
 %%
@@ -215,7 +215,7 @@
 
 \renewcommand{\listfigurename}{\textbf{\fontsize{13pt}{0}\selectfont \BNazaninScaleOne} فهرست شکل‌ها}
 \renewcommand{\listtablename}{\textbf{\fontsize{13pt}{0}\selectfont \BNazaninScaleOne} فهرست جدول‌ها}
-\renewcommand{\listalgorithmname}{\textbf{\fontsize{13pt}{0}\selectfont \BNazaninScaleOne} \hfill فهرست الگوریتم‌ها \hfill\vspace{-6cm}}
+\renewcommand{\listalgorithmname}{\vspace{-79pt}\textbf{\fontsize{13pt}{0}\selectfont \BNazaninScaleOne} \hfill فهرست الگوریتم‌ها \hfill\vspace{-5.7cm}}
 
 \renewcommand{\cftfigpresnum}{شکل }
 \renewcommand{\cftfigaftersnum}{:}
@@ -265,17 +265,18 @@
 \addtocontents{toc}{\protect\afterpage{\protect\afterpage{\vspace*{10pt}}}}
 
 \addtocontents{lof}{~\textbf{\fontsize{13pt}{0}\selectfont {\BNazaninScaleOne عنوان}}\hfill\textbf{\fontsize{13pt}{0}\selectfont {\BNazaninScaleOne صفحه}}\vspace{-0.1cm}\protect\par} % B Nazanin 13
-\addtocontents{lof}{\protect\vspace*{10pt}}
-\addtocontents{lof}{\protect\afterpage{\bfseries عنوان \hfill صفحه}}
-\addtocontents{lof}{\protect\afterpage{\vspace*{10pt}}}
+%\addtocontents{lof}{\protect\vspace*{10pt}}
+%\addtocontents{lof}{\protect\afterpage{\bfseries عنوان \hfill صفحه}}
+%\addtocontents{lof}{\protect\afterpage{\vspace*{10pt}}}
 
 \addtocontents{lot}{~\textbf{\fontsize{13pt}{0}\selectfont {\BNazaninScaleOne عنوان}}\hfill\textbf{\fontsize{13pt}{0}\selectfont {\BNazaninScaleOne صفحه}}\vspace{-0.1cm}\protect\par} % B Nazanin 13
-\addtocontents{lot}{\protect\vspace*{10pt}}
+%\addtocontents{lot}{\protect\vspace*{10pt}}
 %\addtocontents{lot}{\protect\afterpage{\hspace*{-1.3em}\bfseries عنوان \hfill صفحه}}
 %\addtocontents{lot}{\protect\afterpage{\vspace*{25pt}}}
 
 \addtocontents{loa}{~\textbf{\fontsize{13pt}{0}\selectfont {\BNazaninScaleOne عنوان}}\hfill\textbf{\fontsize{13pt}{0}\selectfont {\BNazaninScaleOne صفحه}}\vspace{-0.1cm}\protect\par} % B Nazanin 13
 \addtocontents{loa}{\protect\vspace*{10pt}}
+
 \renewcommand\cftchapaftersnum{:}
 \makeatletter
 \bidi@patchcmd{\Hy@org@chapter}{%
@@ -559,7 +560,8 @@
 {\fontsize{13pt}{0}\selectfont % B Nazanin 13
 در تاریخ
 ~\@DateFa~
-توسط هیأت داوران بررسی و با درجه‌ی~\textbf{\@ThesisMark}~به تصویب نهایی رسید.‎\\
+توسط هیأت داوران بررسی و با درجه‌ی~\textbf{\@ThesisMark}~به تصویب نهایی رسید.‎
+\\
 \vfill
 
 \noindent
@@ -602,14 +604,12 @@
 \ifx\ST@FourthExaminerFa\undefined \else
 \RowNumberFa - &
 استاد داور خارج از گروه  & دکتر‍~\ST@FourthExaminerFa & با مرتبه‌ی علمی~\textbf{\@FourthExaminerAcademicRank} & امضاء
-\\[1cm]
 \fi
-
 \end{tabular}
 }
 }
 
-\vspace{1.5cm}
+\vspace{1.2cm}
 \hfill{مهر و امضاء مدیرگروه}
 \restoregeometry
 }
@@ -825,13 +825,22 @@
 \let\addcontentsline\oldaddcontentsline% Restore \addcontentsline
 }
 
+\newcommand{\myaddcontentsline}[1]{
+\addtocontents{toc}{\protect\vspace{10pt}}
+\addcontentsline{toc}{section}{#1}
+}
+
 % دستوری برای تعریف واژه‌نامه انگلیسی به فارسی
 \newcommand\persiangloss[2]{#1\dotfill\lr{#2}\\}
 % دستوری برای تعریف واژه‌نامه فارسی به انگلیسی 
 \newcommand\englishgloss[2]{#2\dotfill\lr{#1}\\}
 
 % تغییر فرمت شماره‌گذاری الگوریتم‌ها به ۴-۹
+\makeatletter
+\@addtoreset{algorithm}{chapter}% algorithm counter resets every chapter
+\makeatother
 \renewcommand{\thealgorithm}{\arabic{chapter}-\arabic{algorithm}} 
+
 % تنظیم کاراکتر مورد استفاده در لیست‌های غیرترتیبی Bullet list
 \renewcommand{\descriptionlabel}[1]%
 {\hspace{\labelsep} $\checkmark$ \hspace{\labelsep}\textbf{#1}}

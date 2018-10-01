@@ -44,15 +44,22 @@
 % در این قالب سعی شده است که از تمامی بخش‌های موجود در پایان‌نامه‌ها نمونه‌ای آورده شود.
 
 \documentclass[a4paper,fleqn,11pt,oneside]{book}
+\usepackage{tikz}
+\usetikzlibrary{arrows,shapes}
+
 \usepackage{Settings/UI-Thesis}
-\usepackage[nolist]{acronym}
+\usepackage{acronym}
+\usepackage{multirow}
 
 %-----------------------------
 % دستورهای مورد نیاز را در این قسمت اضافه نمایید:
 % Cross-reference commands.
 \newtheorem{thm}{Theorem}[chapter]
+\newtheorem{asmp}{Theorem}[chapter]
 \theoremstyle{definition}
 \newtheorem{definition}[thm]{تعریف}
+\newtheorem{assumption}[asmp]{فرض}
+\newtheorem{example}{مثال}[chapter]
 
 \newcommand{\xs}[1]{بخش~\ref{#1}}
 \newcommand{\xc}[1]{فصل~\ref{#1}}
@@ -66,6 +73,8 @@
 \newcommand{\xl}[1]{کد~\ref{#1}}
 \newcommand{\xal}[1]{الگوریتم~\ref{#1}}
 \newcommand{\xe}[1]{معادله~\eqref{#1}}
+\newcommand{\xex}[1]{مثال~\ref{#1}}
+\newcommand{\xeq}[1]{رابطه~\eqref{#1}}
 
 \newcommand{\mylr}[1]{\texorpdfstring{\lr{#1}}{#1}}
 \eqenvironment{نکات}{itemize}
@@ -80,8 +89,8 @@
 %\algnewcommand{\IfThenElse}[3]{% \IfThenElse{<if>}{<then>}{<else>}
 %  \State \algorithmicif\ #1\ \algorithmicthen\ #2\ \algorithmicelse\ #3}
 
-\algdef{SE}[FOR]{NoDoFor}{EndFor}[1]{\algorithmicfor\ #1}{\algorithmicend\ \algorithmicfor}%
-\algdef{SE}[IF]{NoThenIf}{EndIf}[1]{\algorithmicif\ #1}{\algorithmicend\ \algorithmicif}%
+%\algdef{SE}[FOR]{NoDoFor}{EndFor}[1]{\algorithmicfor\ #1}{\algorithmicend\ \algorithmicfor}%
+%\algdef{SE}[IF]{NoThenIf}{EndIf}[1]{\algorithmicif\ #1}{\algorithmicend\ \algorithmicif}%
 
 \newcommand*\diamondarrow{%
   \stackengine{0pt}{\hspace{1.2ex}$\rightarrow$}{$\lozenge$}{O}{l}{F}{F}{L}}
@@ -139,10 +148,6 @@
 
 \begin{document}
 
-%\section*{List of Acronyms}
-\begin{acronym}
-\acro{MDE}{Model-Driven Engineering}
-\end{acronym}
 
 \pagestyle{plain}
 \pagenumbering{harfi}
@@ -214,6 +219,7 @@
 \MakeTableOfContents
 \MakeListOfFigures
 \MakeListOfTables
+\MakeListOfAlgorithms
 
 % ----------------------------------------------------------------------------
 \clearpage
@@ -274,15 +280,18 @@
 
 % ░░░░░░░▒▒▒▒▒▒▓▓▓▓ Appendices ▓▓▓▓▒▒▒▒▒▒░░░░░░░
 \MakeAppendices
-\addtocontents{lof}{\protect\setcounter{tocdepth}{0}} % ignore adding appendix figures to list of figures
-\addtocontents{lot}{\protect\setcounter{tocdepth}{0}} % ignore adding appendix table to list of tables
+%\addtocontents{lof}{\protect\setcounter{tocdepth}{0}} % ignore adding appendix figures to list of figures
+%\addtocontents{lot}{\protect\setcounter{tocdepth}{0}} % ignore adding appendix table to list of tables
 \captionsetup{list=no}
 
 \input{Chapters/Appendices}
 
 % ░░░░░░░▒▒▒▒▒▒▓▓▓▓ Dictionary ▓▓▓▓▒▒▒▒▒▒░░░░░░░
 \onehalfspacing
-\include{Chapters/dicfa2en}
+\input{Chapters/dicfa2en}
+\input{Chapters/dicen2fa}
+\input{Chapters/acronyms}
+
 
 % ░░░░░░░▒▒▒▒▒▒▓▓▓▓ Abstract - English ▓▓▓▓▒▒▒▒▒▒░░░░░░░
 \input{Chapters/AbstractEn}
